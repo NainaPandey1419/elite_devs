@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import InputModal from './InputFormModal';
 
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('student'); 
-  
+  const [currUploadFormId ,setCurrUploadFormId ] = useState('');
+  const [currUploadFormLabel ,setCurrUploadFormLabel ] = useState('');
   const departments = ['Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical'];
   const years = ['2022', '2023', '2024', '2025'];
   const categories = ['Academic', 'Research Papers', 'Internship', 'GATE', 'CAT', 'Faculty Progress'];
@@ -73,8 +75,11 @@ const Dashboard = () => {
     ]
   };
 
-  const handleUpload = (actionId) => {
-    console.log(`${actionId} action triggered`);
+  const handleUpload = (actionObj) => {
+    console.log(`${actionObj.label} action triggered`);
+    setCurrUploadFormId(()=>actionObj.id);
+    setCurrUploadFormLabel(()=>actionObj.label)
+    return document.getElementById('my_modal_1').showModal();
   };
 
   return (
@@ -171,6 +176,7 @@ const Dashboard = () => {
             }}>
               Logged in as: <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>{userRole}</span>
             </div>
+           
             <nav>
               <ul style={{ 
                 listStyle: 'none',
@@ -292,7 +298,7 @@ const Dashboard = () => {
                     </button>
                   </li>
                 ))}
-
+                 
                 {userRole === 'admin' && uploadActions.faculty.map((action) => (
                   <li key={action.id} style={{ marginBottom: '8px' }}>
                     <button 
@@ -605,7 +611,7 @@ const Dashboard = () => {
                       {uploadActions.admin.map((action) => (
                         <button
                           key={action.id}
-                          onClick={() => handleUpload(action.id)}
+                          onClick={() => handleUpload(action)}
                           style={{ 
                             backgroundColor: '#553c9a',
                             color: 'white',
@@ -630,6 +636,7 @@ const Dashboard = () => {
                 </div>
               </div>
             )}
+            <InputModal actionId={currUploadFormId} action={currUploadFormLabel}/>
           </div>
         </div>
       </div>
