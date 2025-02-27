@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import {useForm}  from 'react-hook-form'
+import {signIn}  from '../../../operations/auth';
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Login attempt with:", { email, password });
-    // authentication
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+ 
+  const onSubmit = async (data) => {
+    return await signIn(navigate,dispatch,data);
+  }
+
 
   return (
     <div style={{ 
@@ -24,7 +32,7 @@ const Login = () => {
         backgroundColor: "#1E1E1E", 
         borderRadius: "8px", 
         padding: "40px", 
-        width: "350px",
+        width: "400px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)"
       }}>
         <h1 style={{ 
@@ -36,7 +44,7 @@ const Login = () => {
           Login to Your Account
         </h1>
         
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit(onSubmit)}>
           <div style={{ marginBottom: "20px" }}>
             <label style={{ 
               display: "block", 
@@ -48,8 +56,7 @@ const Login = () => {
             </label>
             <input 
               type="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name='email'
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -61,8 +68,15 @@ const Login = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Enter your email"
-              required
-            />
+              {...register("email", {
+                required:{value: true,message:'Email is required'}, 
+               minLength: { value: 12, message: "Email length should be greater 12 word" },
+             })}
+           />
+           {/* -------Error handling ------- */}
+           {errors.email && (
+             <p role="alert" className='text-[.81rem] text-red-500'>{errors?.email?.message}</p>
+           )}
           </div>
           
           <div style={{ marginBottom: "25px" }}>
@@ -76,8 +90,7 @@ const Login = () => {
             </label>
             <input 
               type="password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+             name="password"
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -89,8 +102,15 @@ const Login = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Enter your password"
-              required
-            />
+              {...register("password", {
+                required:{value: true,message:'Password is required'}, 
+               minLength: { value: 8, message: "Password length should be greater than 8 word" },
+             })}
+           />
+           {/* -------Error handling ------- */}
+           {errors.password &&  (
+             <p role="alert" className='text-[.81rem] text-red-500'>{errors?.password?.message}</p>
+           )}
           </div>
           
           <button type="submit" style={{ 

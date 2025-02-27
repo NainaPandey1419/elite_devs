@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
+import {useForm}  from 'react-hook-form'
+import { signUp } from '../../../operations/auth';
+import { useDispatch } from 'react-redux';
 
 const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("");
-  
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("SignUp attempt with:", { name, email, password });
-  
-    navigate("/");
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+ 
+  const onSubmit = async (data) => {
+    return await signUp(navigate,dispatch,data);
+  }
+
   
 
   return (
@@ -30,8 +33,8 @@ const SignUp = () => {
       <div style={{ 
         backgroundColor: "#1E1E1E", 
         borderRadius: "8px", 
-        padding: "40px", 
-        width: "400px",
+        padding: "10px 40px", 
+        width: "500px",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)"
       }}>
         <h1 style={{ 
@@ -43,7 +46,8 @@ const SignUp = () => {
           Create Your Account
         </h1>
         
-        <form onSubmit={handleSubmit}>
+        <form 
+        onSubmit={handleSubmit(onSubmit)}>
           <div style={{ marginBottom: "20px" }}>
             <label style={{ 
               display: "block", 
@@ -55,8 +59,7 @@ const SignUp = () => {
             </label>
             <input 
               type="text" 
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name='fullName'
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -68,8 +71,17 @@ const SignUp = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Enter your full name"
-              required
-            />
+
+             // --------validation--------
+             {...register("fullName", {
+               required:{value: true,message:'Full Name is required'}, 
+              minLength: { value: 10, message: "full Name length should be greater 20 word" },
+            })}
+          />
+          {/* -------Error handling ------- */}
+          {errors.fullName && (
+            <p role="alert" className='text-[.81rem] text-red-500'>{errors?.fullName?.message}</p>
+          )}
           </div>
 
           <div style={{ marginBottom: "20px" }}>
@@ -83,8 +95,7 @@ const SignUp = () => {
             </label>
             <input 
               type="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name='email'
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -96,8 +107,15 @@ const SignUp = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Enter your email"
-              required
-            />
+              {...register("email", {
+                required:{value: true,message:'Email is required'}, 
+               minLength: { value: 12, message: "Email length should be greater 12 word" },
+             })}
+           />
+           {/* -------Error handling ------- */}
+           {errors.email && (
+             <p role="alert" className='text-[.81rem] text-red-500'>{errors?.email?.message}</p>
+           )}
           </div>
           
           <div style={{ marginBottom: "20px" }}>
@@ -111,8 +129,7 @@ const SignUp = () => {
             </label>
             <input 
               type="password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name='password'
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -124,8 +141,15 @@ const SignUp = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Create a password"
-              required
-            />
+              {...register("password", {
+                required:{value: true,message:'Password is required'}, 
+               minLength: { value: 8, message: "Password length should be greater than 8 word" },
+             })}
+           />
+           {/* -------Error handling ------- */}
+           {errors.password &&  (
+             <p role="alert" className='text-[.81rem] text-red-500'>{errors?.password?.message}</p>
+           )}
           </div>
 
           <div style={{ marginBottom: "20px" }}>
@@ -139,8 +163,7 @@ const SignUp = () => {
             </label>
             <input 
               type="password" 
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              name='confirmPassword'
               style={{ 
                 width: "100%", 
                 padding: "12px", 
@@ -152,8 +175,17 @@ const SignUp = () => {
                 boxSizing: "border-box"
               }}
               placeholder="Confirm your password"
-              required
-            />
+              {...register("confirmPassword", {
+                required:{value: true, message:'confirmPassword is required'}, 
+               minLength: { value: 8, message: "confirmPassword length should be greater than 8 word" },
+
+             })}
+           />
+           {/* -------Error handling ------- */}
+           {errors.confirmPassword && (
+             <p role="alert" className='text-[.81rem] text-red-500'>{errors?.confirmPassword?.message}</p>
+           )}
+          
           </div>
 
           <button type="submit" style={{ 

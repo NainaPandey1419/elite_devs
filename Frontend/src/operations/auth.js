@@ -1,18 +1,17 @@
-
 import toast from "react-hot-toast";
 import { authSliceAction } from "../store/slices/auth";
 import { fetchSliceAction } from "../store/slices/fetchSlice";
-import { signUp } from "../endpoints/endPoint";
+import { authUpEndPoint } from "../endpoints/endPoint";
 
 // Signup function handler
 export const signUp = async (navigate, dispatch, signUpData) => {
   try {
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await signUp(signUpData,'signup')
+    const res = await authUpEndPoint(signUpData,'signup')
     dispatch(fetchSliceAction.deserializeFetching());
     if (res && res?.data?.success) {
       console.log("SIGNUP RESPONSE ---->>:", res)
-      //save user info into local storage
+      //SAVE USER INFO LOACL STORAGE 
       window.localStorage.setItem('currUser', JSON.stringify(res.data.currUser));
       dispatch(authSliceAction.setUserData(res.data.currUser))
       toast.success(res?.data?.message, {
@@ -51,9 +50,10 @@ export const signUp = async (navigate, dispatch, signUpData) => {
 
 // Login  function handler
 export const signIn = async (navigate,dispatch,formData) => {
+  console.log(formData)
   try {
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await signUp(formData,'login')
+    const res = await authUpEndPoint(formData,'login')
     dispatch(fetchSliceAction.deserializeFetching());
     if (res.data && res.data.success) {
       console.log("LOGIN RESPONSE --->>>", res)
