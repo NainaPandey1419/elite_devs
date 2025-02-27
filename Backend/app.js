@@ -5,6 +5,7 @@ import userRoute from "./routers/user.route.js"
 import errorMiddleware from "./middlewares/error.middlewares.js";
 import intershipRoute from "./routers/intership.route.js"
 import gateRoute from "./routers/gate.route.js"
+import catRoute from "./routers/cat.route.js";
 
 
 const app=express();
@@ -28,6 +29,7 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}));
 app.use("/api/v1/user",userRoute);
 app.use("/api/v1/intership",intershipRoute);
 app.use("/api/v1/gate",gateRoute);
+app.use("/api/v1/cat",catRoute);
 
 
 app.use("/",(req,res)=>{

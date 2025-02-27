@@ -5,27 +5,30 @@ const gateSchema = new Schema(
     studentName: {
       type: String,
       required: [true, "Name must be required"],
-      lowercase: true,
       trim: true,
     },
-    rank: {
+    enrollmentNumber: {
       type: String,
-      lowercase: true,
-      trim: true,
-    },
-    marks: {
-      type: String,
-      lowercase: true,
-      trim: true,
-    },
-    year: {
-      type: String,
-      lowercase: true,
       trim: true,
     },
     branch: {
       type: String,
-      lowercase: true,
+      trim: true,
+    },
+    category: {
+      type: String,
+      trim: true,
+    },
+    gateRegistration: {
+      type: String,
+      trim: true,
+    },
+    rank: {
+      type: String,
+      trim: true,
+    },
+    score: {
+      type: String,
       trim: true,
     },
   },

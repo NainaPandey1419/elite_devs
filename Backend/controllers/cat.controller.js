@@ -1,21 +1,22 @@
 import fs from "fs";
 import xlsx from "xlsx";
 import csvParser from "csv-parser";
-import Placement from "../models/placement.model.js";
+import Cat from "../models/cat.model.js"; // Update to Cat model
 import ApiError from "../utills/error.utills.js";
 
-const uploadPlacementData = async (req, res, next) => {
+const uploadCatData = async (req, res, next) => {
   try {
-    const REQUIRED_COLUMNS = ["studentName", "enrollmentNumber", "branch", "companyName"];
+    const REQUIRED_COLUMNS = ["studentName", "enrollmentNumber", "branch", "category", "catRegistration", "rank", "score"]; // Adjust columns
 
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));
     }
 
-    const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
+    const fileExtension = req.file.originalname.split('.').pop().toLowerCase();
     let jsonData = [];
 
     if (fileExtension === "xls" || fileExtension === "xlsx") {
+      // Process Excel files
       const workbook = xlsx.readFile(req.file.path);
       const sheetName = workbook.SheetNames[0];
 
@@ -27,6 +28,7 @@ const uploadPlacementData = async (req, res, next) => {
       const sheet = workbook.Sheets[sheetName];
       jsonData = xlsx.utils.sheet_to_json(sheet);
     } else if (fileExtension === "csv") {
+      // Process CSV files
       const csvData = [];
       await new Promise((resolve, reject) => {
         fs.createReadStream(req.file.path)
@@ -42,12 +44,13 @@ const uploadPlacementData = async (req, res, next) => {
       return next(new ApiError(400, "Invalid file format. Please upload .xls, .xlsx, or .csv"));
     }
 
-    fs.unlinkSync(req.file.path);
+    fs.unlinkSync(req.file.path); // Delete file after reading
 
     if (jsonData.length === 0) {
       return next(new ApiError(404, "No data found in the file"));
     }
 
+    // Validate column headers
     const headers = Object.keys(jsonData[0]);
     const isValidFormat = REQUIRED_COLUMNS.every(col => headers.includes(col));
 
@@ -55,54 +58,61 @@ const uploadPlacementData = async (req, res, next) => {
       return next(new ApiError(401, "Invalid file format. Ensure required columns exist"));
     }
 
+    // Validate and format data
     const validatedData = jsonData.map((entry) => {
-      if (!entry.studentName || !entry.enrollmentNumber || !entry.branch || !entry.companyName) {
-        throw new ApiError(400, "Missing required fields: studentName, enrollmentNumber, branch, or companyName");
+      if (!entry.studentName || !entry.rank || !entry.score || !entry.branch) {
+        throw new ApiError(400, "Missing required fields: studentName, rank, marks, or branch");
       }
 
       return {
         studentName: entry.studentName.trim(),
         enrollmentNumber: entry.enrollmentNumber.trim(),
         branch: entry.branch.trim(),
-        companyName: entry.companyName.trim(),
+        category: entry.category.trim(),
+        catRegistration: entry.catRegistration.toString().trim(), // Adjusted field
+        rank: entry.rank.toString().trim(),
+        score: entry.score.toString().trim(),
       };
     });
 
-    await Placement.insertMany(validatedData);
+    await Cat.insertMany(validatedData); // Insert into Cat collection
 
-    res.status(200).json({ success: true, message: "Placement data uploaded successfully", data: validatedData });
+    res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
     if (req.file?.path) fs.unlinkSync(req.file.path);
     return next(new ApiError(500, error.message));
   }
 };
 
-const getPlacementData = async (req, res, next) => {
+const getCatData = async (req, res, next) => {
   try {
-    const data = await Placement.find();
+    const data = await Cat.find(); // Fetch data from Cat collection
 
     if (data.length === 0) {
-      return next(new ApiError(404, "No placement data found"));
+      return next(new ApiError(404, "No data found"));
     }
 
-    res.status(200).json({ success: true, message: "Placement data fetched successfully", data });
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-const deleteAllPlacementData = async (req, res, next) => {
+const deleteAllCatData = async (req, res, next) => {
   try {
-    const result = await Placement.deleteMany({});
+    const result = await Cat.deleteMany({}); // Delete all Cat data
 
     if (result.deletedCount === 0) {
-      return next(new ApiError(404, "No placement data found to delete"));
+      return next(new ApiError(404, "No Cat data found to delete"));
     }
 
-    res.status(200).json({ success: true, message: "All placement data deleted successfully" });
+    res.status(200).json({
+      success: true,
+      message: "All Cat data deleted successfully",
+    });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-export { uploadPlacementData, getPlacementData, deleteAllPlacementData };
+export { uploadCatData, getCatData, deleteAllCatData }; // Export functions
