@@ -24,7 +24,7 @@ const Home = () => {
         }}
       >
         <div>
-          <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>StudentTrack</h1>
+          <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>AnuPort</h1>
         </div>
         <div
           style={{
@@ -139,6 +139,7 @@ const Home = () => {
             insights into student progress all in one place.
           </p>
           <div style={{ display: "flex", gap: "16px" }}>
+        <NavLink to="/dashboard">
             <button
               style={{
                 backgroundColor: "#3b82f6",
@@ -152,6 +153,7 @@ const Home = () => {
             >
               Go to Dashboard
             </button>
+            </NavLink>
             <button
               style={{
                 backgroundColor: "#333",
@@ -530,7 +532,7 @@ const Home = () => {
                 marginBottom: "16px",
               }}
             >
-              StudentTrack
+              AnuPort
             </h2>
             <p style={{ color: "#888" }}>
               Empowering educational institutions with powerful reporting and
@@ -639,7 +641,7 @@ const Home = () => {
             margin: "0 auto",
           }}
         >
-          <p>© 2025 StudentTrack. All rights reserved.</p>
+          <p>© 2025 AnuPort. All rights reserved.</p>
         </div>
       </footer>
     </div>

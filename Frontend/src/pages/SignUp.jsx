@@ -12,16 +12,11 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("SignUp attempt with:", { name, email, password, role });
-    
-    if (role === "admin") {
-      navigate("/admin-dashboard");
-    } else if (role === "teacher") {
-      navigate("/teacher-dashboard");
-    } else if (role === "student") {
-      navigate("/student-dashboard");
-    }
+    console.log("SignUp attempt with:", { name, email, password });
+  
+    navigate("/");
   };
+  
 
   return (
     <div style={{ 
@@ -161,39 +156,6 @@ const SignUp = () => {
             />
           </div>
 
-          <div style={{ marginBottom: "25px" }}>
-            <label style={{ 
-              display: "block", 
-              color: "#E0E0E0", 
-              marginBottom: "8px",
-              fontSize: "14px"
-            }}>
-              I am a
-            </label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              style={{ 
-                width: "100%", 
-                padding: "12px", 
-                backgroundColor: "#2D2D2D", 
-                border: "1px solid #444",
-                borderRadius: "4px", 
-                color: "#FFFFFF",
-                outline: "none",
-                boxSizing: "border-box",
-                appearance: "auto",
-                cursor: "pointer"
-              }}
-              required
-            >
-              <option value="" disabled>Select your role</option>
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
-          
           <button type="submit" style={{ 
             width: "100%", 
             padding: "12px", 
