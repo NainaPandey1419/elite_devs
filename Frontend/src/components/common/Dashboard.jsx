@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
 const Dashboard = () => {
-  // State for user role - in a real app, this would come from authentication
-  const [userRole, setUserRole] = useState('student'); // Options: 'student', 'faculty', 'admin'
+  const [userRole, setUserRole] = useState('student'); 
   
-  // Mock data for dropdowns
   const departments = ['Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical'];
   const years = ['2022', '2023', '2024', '2025'];
   const categories = ['Academic', 'Research Papers', 'Internship', 'GATE', 'CAT', 'Faculty Progress'];
   
-  // Role-based access control map
   const roleAccess = {
     student: {
       uploadMidSem: false,
@@ -49,24 +46,16 @@ const Dashboard = () => {
     }
   };
 
-  // For demonstration purposes - toggle between roles
   const changeRole = (role) => {
     setUserRole(role);
   };
 
-  // Common navigation items for all roles
   const commonNavItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'filters', label: 'Filters' },
     { id: 'viewReport', label: 'View Report' },
-    { id: 'departmentWise', label: 'Department-wise' },
-    { id: 'yearWise', label: 'Year-wise' },
-    { id: 'categoryWise', label: 'Category-wise' },
     { id: 'contactUs', label: 'Contact Us' }
   ];
 
-  // Role-specific upload actions
   const uploadActions = {
     faculty: [
       { id: 'uploadMidSem', label: 'Upload Mid Sem Data' },
@@ -84,10 +73,8 @@ const Dashboard = () => {
     ]
   };
 
-  // Function to handle upload action
   const handleUpload = (actionId) => {
     console.log(`${actionId} action triggered`);
-    // Implement the actual upload functionality here
   };
 
   return (
@@ -97,7 +84,6 @@ const Dashboard = () => {
       color: '#ffffff',
       fontFamily: 'Arial, sans-serif' 
     }}>
-      {/* Role Selector (for demo only) */}
       <div style={{ 
         backgroundColor: '#1E1E1E', 
         padding: '16px'
@@ -171,7 +157,6 @@ const Dashboard = () => {
           gridTemplateColumns: 'repeat(12, 1fr)',
           gap: '24px'
         }}>
-          {/* Navigation Sidebar */}
           <div style={{ 
             gridColumn: 'span 3',
             backgroundColor: '#1E1E1E',
@@ -192,28 +177,25 @@ const Dashboard = () => {
                 padding: 0,
                 margin: 0
               }}>
-                {/* Common navigation items */}
                 {commonNavItems.map((item) => (
                   <li key={item.id} style={{ marginBottom: '8px' }}>
-                    <a 
-                      href={`#${item.id}`} 
-                      style={{ 
-                        display: 'block',
-                        padding: '8px',
-                        borderRadius: '4px',
-                        color: '#ffffff',
-                        textDecoration: 'none',
-                        transition: 'background-color 0.2s',
-                        backgroundColor: '#1E1E1E',
-                        hover: {
-                          backgroundColor: '#2a2a2a'
-                        }
-                      }}
-                    >
-                      {item.label}
-                    </a>
+                  <a 
+                    href={item.id === "home" ? "/" : `#${item.id}`} 
+                    style={{ 
+                      display: 'block',
+                      padding: '8px',
+                      borderRadius: '4px',
+                      color: '#ffffff',
+                      textDecoration: 'none',
+                      transition: 'background-color 0.2s',
+                      backgroundColor: '#1E1E1E'
+                    }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = '#2a2a2a'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = '#1E1E1E'}
+                  >
+                    {item.label}
+                  </a>
                     
-                    {/* Sub-dropdown for Category-wise */}
                     {item.id === 'categoryWise' && (
                       <ul style={{ 
                         listStyle: 'none',
@@ -247,7 +229,6 @@ const Dashboard = () => {
                   </li>
                 ))}
 
-                {/* Divider before Upload Actions */}
                 {(userRole === 'faculty' || userRole === 'admin') && (
                   <li style={{ 
                     borderTop: '1px solid #333333',
@@ -262,8 +243,6 @@ const Dashboard = () => {
                     }}>Upload Actions</div>
                   </li>
                 )}
-
-                {/* Faculty Upload Actions */}
                 {userRole === 'faculty' && uploadActions.faculty.map((action) => (
                   <li key={action.id} style={{ marginBottom: '8px' }}>
                     <button 
@@ -288,7 +267,6 @@ const Dashboard = () => {
                   </li>
                 ))}
 
-                {/* Admin Upload Actions */}
                 {uploadActions.admin.map((action) => (
                   <li key={action.id} style={{ marginBottom: '8px' }}>
                     <button 
@@ -315,7 +293,6 @@ const Dashboard = () => {
                   </li>
                 ))}
 
-                {/* Faculty Upload Actions for Admin View (disabled) */}
                 {userRole === 'admin' && uploadActions.faculty.map((action) => (
                   <li key={action.id} style={{ marginBottom: '8px' }}>
                     <button 
@@ -339,7 +316,6 @@ const Dashboard = () => {
             </nav>
           </div>
 
-          {/* Main Content Area */}
           <div style={{ 
             gridColumn: 'span 9',
             backgroundColor: '#1E1E1E',
@@ -353,7 +329,6 @@ const Dashboard = () => {
               marginBottom: '24px'
             }}>Dashboard Overview</h2>
             
-            {/* Filters Section */}
             <div style={{ 
               marginBottom: '24px',
               padding: '16px',
@@ -454,7 +429,6 @@ const Dashboard = () => {
               </button>
             </div>
 
-            {/* Role-specific Content */}
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{ 
                 fontWeight: 'bold',
@@ -525,7 +499,6 @@ const Dashboard = () => {
               )}
             </div>
 
-            {/* Quick Stats */}
             <div style={{ 
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
@@ -576,7 +549,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Upload Section - Visible only for Faculty and Admin */}
             {(userRole === 'faculty' || userRole === 'admin') && (
               <div style={{ 
                 border: '1px solid #333333',
