@@ -224,6 +224,4 @@ export {
   login,
   logout,
   profile,
-  changePassword,
-  updateProfile,
 };

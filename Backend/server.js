@@ -3,9 +3,7 @@ config()
 import app from "./app.js";
 import conectDB from "./config/dbConection.js"
 import cloudinary from "cloudinary"
-import EventEmitter from 'events';
-import Razorpay from "razorpay";
-EventEmitter.defaultMaxListeners = 15;
+
 
 
 
@@ -17,11 +15,6 @@ conectDB()
 })
 .catch((e)=>{
       console.log("database is not connected");
-})
-
-export const razorpay=new Razorpay({
-       key_id:process.env.RAYZORPAY_KEY_ID,
-       key_secret:process.env.RAYZORPAY_SECRET
 })
 
 
