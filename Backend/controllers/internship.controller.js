@@ -20,6 +20,7 @@ const uploadInternshipData = async (req, res, next) => {
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));
     }
+    
 
     const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
     let jsonData = [];

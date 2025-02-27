@@ -5,16 +5,18 @@ import { fetchSliceAction } from "../store/slices/fetchSlice";
 // InternShip data Upload function handler
 export const uploadInternShipData = async (dispatch, internShipDataFile) => {
   try {
+    const data = new FormData();
+    data.append('intershipData', internShipDataFile);
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/internship/upload`,internShipDataFile,{
+    const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,data,{
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
+    console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     dispatch(fetchSliceAction.deserializeFetching());
     if (res && res?.data?.success) {
-      console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
       toast.success(res?.data?.message, {
         style: {
           background: '#001a00',
