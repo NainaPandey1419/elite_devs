@@ -99,6 +99,12 @@ function CATStats() {
 
   return (
     <div id="pdf-content" style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <button
+          onClick={exportPDF}
+          className="absolute top-2 right-5 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Export as PDF
+        </button>
       <h1>CAT Exam Statistics</h1>
 
       {/* 🟢 Pie Chart: Branch-wise Distribution */}
@@ -134,9 +140,6 @@ function CATStats() {
           <Bar dataKey="count" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
-      <button onClick={exportPDF} className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
-        Export as PDF
-      </button>
     </div>
   );
 }
