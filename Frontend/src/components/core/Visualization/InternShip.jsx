@@ -15,6 +15,7 @@ import {
 import { getInternShipData } from "../../../operations/getData";
 import { useDispatch, useSelector } from "react-redux";
 import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 function InternshipStats() {
   const dispatch = useDispatch();
 
@@ -74,6 +75,7 @@ function InternshipStats() {
 
   return (
     <div>
+      <Branches />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}

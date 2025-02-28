@@ -14,6 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getNPTELData } from "../../../operations/getData";
 import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 
 export default function NPTELVisual() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ export default function NPTELVisual() {
 
   return (
     <div>
+      <Branches />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}

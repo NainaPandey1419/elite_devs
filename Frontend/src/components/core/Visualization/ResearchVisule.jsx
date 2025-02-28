@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 
 export default function ResearchVisual() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ export default function ResearchVisual() {
 
   return (
     <div>
+      <Branches />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}
