@@ -5,7 +5,7 @@ import {isLoggedIn} from "../middlewares/userAuth.js"
 import upload from "../middlewares/multer.middleware.js"
 const userRoute=Router()
 
-userRoute.post("/register",upload.single('avatar'),register)
+userRoute.post("/register",register)
 userRoute.post("/login",login)
 userRoute.get("/logout",logout)
 userRoute.get("/profile",isLoggedIn,profile)

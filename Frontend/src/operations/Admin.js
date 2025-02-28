@@ -3,19 +3,22 @@ import toast from "react-hot-toast";
 import { fetchSliceAction } from "../store/slices/fetchSlice";
 
 // InternShip data Upload function handler
-export const uploadInternShipData = async (dispatch, internShipDataFile) => {
+export const uploadInternShipData = async (dispatch, internshipData) => {
+  const data =new FormData();
+  data.append('internshipData',internshipData);
   try {
     const data = new FormData();
     data.append('intershipData', internShipDataFile);
     
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,data,{
-      withCredentials: true, // Enables sending cookies/auth headers
+    const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,{internshipData},{
+      // withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
     dispatch(fetchSliceAction.deserializeFetching());
+    console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     if (res && res?.data?.success) {
       toast.success(res?.data?.message, {
         style: {

@@ -16,6 +16,4 @@ intershipRoute.post("/upload",(req,res,next)=>{
     next();
 },uploadInternshipData);
 
-
-
 export default intershipRoute;

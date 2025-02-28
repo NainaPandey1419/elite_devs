@@ -1,11 +1,13 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+// import exportPDF from "./exportPDF";
 
 const Home = () => {
   
   const navigate = useNavigate();
   return (
-    <div
+    <div 
+    // id="pdf-content"
       style={{
         minHeight: "100vh",
         backgroundColor: "#121212",
@@ -13,6 +15,9 @@ const Home = () => {
         fontFamily: "sans-serif",
       }}
     >
+      {/* <button onClick={exportPDF} className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+  Export as PDF
+</button> */}
       {/* Navigation Bar */}
       <nav
         style={{
