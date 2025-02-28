@@ -14,7 +14,8 @@ const uploadExcelSheet = multer({
     let ext = path.extname(file.originalname).toLowerCase();
     if (
       ext !== ".xls" &&
-      ext !== ".xlsx"
+      ext !== ".xlsx" &&
+      ext !== ".csv"
     ) {
       cb(new Error(`Unsupported file type! ${ext}`), false);
       return;

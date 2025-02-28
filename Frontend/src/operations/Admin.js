@@ -7,6 +7,8 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
   const data =new FormData();
   data.append('internshipData',internshipData);
   try {
+    const data = new FormData();
+    data.append('intershipData', internShipDataFile);
     dispatch(fetchSliceAction.serializeFetching());
     const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,{internshipData},{
       // withCredentials: true, // Enables sending cookies/auth headers
@@ -14,6 +16,7 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
         "Content-Type": "multipart/form-data",
       },
     })
+    console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     dispatch(fetchSliceAction.deserializeFetching());
     console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     if (res && res?.data?.success) {

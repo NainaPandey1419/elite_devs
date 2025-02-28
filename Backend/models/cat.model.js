@@ -1,47 +1,46 @@
 import { Schema, model } from "mongoose";
 
-const intershipSchema = new Schema(
+const catSchema = new Schema(
   {
     studentName: {
       type: String,
-      required: ["true", "Name must be required"],
+      required: [true, "Name must be required"],
       trim: true,
     },
     enrollmentNumber: {
       type: String,
       trim: true,
     },
-    branch:{
+    branch: {
       type: String,
       trim: true,
     },
-    companyName:{
+    category: {
       type: String,
       trim: true,
     },
-    duration:{
+    catRegistration: {
       type: String,
       trim: true,
     },
-    stipend:{
+    percentile: {
       type: String,
       trim: true,
     },
-    projectTitle:{
+    score: {
       type: String,
       trim: true,
     },
-    status:{
+    rank: {
       type: String,
       trim: true,
-    }
+    },
   },
   {
     timestamps: true,
   }
 );
 
+const Cat= model("Cat", catSchema);
 
-const Intership = model("Intership", intershipSchema);
-
-export default Intership;
+export default Cat;
