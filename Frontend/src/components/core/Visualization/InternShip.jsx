@@ -78,7 +78,7 @@ function InternshipStats() {
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}
-          className="absolute top-2 right-2 bg-blue-500 text-white px-4 py-2 rounded"
+          className="absolute bottom-2 right-2 bg-blue-500 text-white px-4 py-2 rounded"
         >
           Export as PDF
         </button>
