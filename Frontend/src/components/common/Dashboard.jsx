@@ -510,36 +510,6 @@ const Dashboard = () => {
                     ))}
                   </select>
                 </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "14px",
-                      fontWeight: "medium",
-                      color: "#cccccc",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    Category
-                  </label>
-                  <select
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      border: "1px solid #333333",
-                      borderRadius: "4px",
-                      backgroundColor: "#121212",
-                      color: "#ffffff",
-                    }}
-                  >
-                    <option value="">Select Category</option>
-                    {categories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
               </div>
               <button
                 style={{
