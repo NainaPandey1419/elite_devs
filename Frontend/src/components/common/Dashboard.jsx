@@ -595,32 +595,32 @@ const Dashboard = () => {
               ) : (
                 <div>
                   <NavLink to="/internships">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize Internship Reports
                     </button>
                   </NavLink>
                   <NavLink to="/gate">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10 ">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10 ">
                       Visualize Gate Reports
                     </button>
                   </NavLink>
                   <NavLink to="/cat">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
                       Visualize CAT Reports
                     </button>
                   </NavLink>
                   <NavLink to="/nptel">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize NPTEL Reports
                     </button>
                   </NavLink>
                   <NavLink to="/placement">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize Placement Reports
                     </button>
                   </NavLink>
                   <NavLink to="/research">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
                       Visualize Research Reports
                     </button>
                   </NavLink>
