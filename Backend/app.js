@@ -6,6 +6,8 @@ import errorMiddleware from "./middlewares/error.middlewares.js";
 import intershipRoute from "./routers/intership.route.js"
 import gateRoute from "./routers/gate.route.js"
 import catRoute from "./routers/cat.route.js";
+import placementRoute from "./routers/placement.route.js";
+import researchPaperRoute from "./routers/researchPaperPublication.route.js";
 
 
 const app=express();
@@ -14,14 +16,14 @@ app.use(cookieParser());
 
 
 const corsOptions = {
-  origin:"*",
+  origin:"http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 };
 
 // Use CORS Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.urlencoded({extended:true,limit:"16kb"}));
 
 
@@ -31,6 +33,8 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/intership",intershipRoute);
 app.use("/api/v1/gate",gateRoute);
 app.use("/api/v1/cat",catRoute);
+app.use("/api/v1/placement",placementRoute);
+app.use("/api/v1/research",researchPaperRoute);
 
 
 app.use("/",(req,res)=>{

@@ -65,7 +65,7 @@ export default function UploadGATE({ action }) {
       setUploadStatus("error");
       return;
     }
-    return await uploadGATEData(dispatch, data);
+    return await uploadGATEData(dispatch, data.file);
   };
 
   const formatFileSize = (bytes) => {

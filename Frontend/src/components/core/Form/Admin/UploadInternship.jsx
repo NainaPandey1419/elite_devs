@@ -58,13 +58,27 @@ export default function UploadInternship({action}) {
     setUploadStatus("");
     setValue("file", null);
   };
-
+  // function handelImage(e) {
+  //   e.preventDefault()
+  //   const uploadImage=e.target.files[0]
+ 
+  //   if (uploadImage) {
+  //      const filerider=new FileReader()
+  //      filerider.readAsDataURL(uploadImage)
+  //      filerider.addEventListener("load",function(){
+  //           setData({
+  //              avatar:uploadImage
+  //           })
+  //      })
+  //   }
+   
+  // }
   const onSubmit = async (data) => {
     if (!file) {
       setUploadStatus("error");
       return;
     }
-    return await uploadInternShipData(dispatch,data);
+    return await uploadInternShipData(dispatch,data.file);
   };
 
   const formatFileSize = (bytes) => {

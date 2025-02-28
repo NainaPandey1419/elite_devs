@@ -6,6 +6,15 @@ const catRoute=Router()
 
 catRoute.get("/",getCatData);
 catRoute.delete("/delete-all",deleteAllCatData);
-catRoute.post("/upload",uploadExcelSheet.single('catData'),uploadCatData);
+catRoute.post("/upload",(req,res,next)=>{
+  console.log("I am in cat route 1")
+  next();
+},uploadExcelSheet.single('catData'),(req,res,next)=>{
+  console.log("I am in cat route 2")
+  console.log(req.file);
+  next();
+},uploadCatData);
+
+//catRoute.post("/upload",uploadExcelSheet.single('catData'),uploadCatData);
 
 export default catRoute;

@@ -8,15 +8,15 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
   data.append('internshipData',internshipData);
   try {
     const data = new FormData();
-    data.append('intershipData', internShipDataFile);
+    data.append('intershipData', internshipData);
+    
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,{internshipData},{
+    const res = await axios.post(`http://localhost:4000/api/v1/intership/upload`,data,{
       // withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
-    console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     dispatch(fetchSliceAction.deserializeFetching());
     console.log("UPLOAD INTERNSHIP DATA RESPONSE ---->>:", res)
     if (res && res?.data?.success) {
@@ -57,8 +57,10 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
 // Placement data Upload function handler
 export const uploadPlacementData = async (dispatch, placementDataFile) => {
   try {
+    const data = new FormData();
+    data.append('placementData', placementDataFile);
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/placement/upload`,placementDataFile,{
+    const res = await axios.post(`http://localhost:4000/api/v1/placement/upload`,data,{
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
@@ -104,8 +106,10 @@ export const uploadPlacementData = async (dispatch, placementDataFile) => {
 // GATE data Upload function handler
 export const uploadGATEData = async (dispatch, GATEDataFile) => {
   try {
+    const data = new FormData();
+    data.append('gateData', GATEDataFile);
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/gate/upload`,GATEDataFile,{
+    const res = await axios.post(`http://localhost:4000/api/v1/gate/upload`,data,{
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
@@ -151,8 +155,10 @@ export const uploadGATEData = async (dispatch, GATEDataFile) => {
 // CAT data Upload function handler
 export const uploadCATData = async (dispatch, CATDataFile) => {
   try {
+    const data = new FormData();
+    data.append('catData', CATDataFile);
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/internship/cat`,CATDataFile,{
+    const res = await axios.post(`http://localhost:4000/api/v1/cat/upload`,data,{
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",

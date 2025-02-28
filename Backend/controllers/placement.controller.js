@@ -6,7 +6,7 @@ import ApiError from "../utills/error.utills.js";
 
 const uploadPlacementData = async (req, res, next) => {
   try {
-    const REQUIRED_COLUMNS = ["studentName", "enrollmentNumber", "branch", "companyName"];
+    const REQUIRED_COLUMNS = ["studentName","companyName", "enrollmentNumber", "branch"];
 
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));

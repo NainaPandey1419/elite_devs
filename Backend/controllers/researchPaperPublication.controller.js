@@ -1,36 +1,38 @@
 import fs from "fs";
 import xlsx from "xlsx";
 import csvParser from "csv-parser";
-import Intership from "../models/internship.model.js";
+import ResearchPaperPublication from "../models/researchPaperPublication.js"
 import ApiError from "../utills/error.utills.js";
 
-const uploadInternshipData = async (req, res, next) => {
+
+const uploadResearchPaperData = async (req, res, next) => {
   try {
     const REQUIRED_COLUMNS = [
       "studentName",
       "enrollmentNumber",
       "branch",
-      "companyName",
-      "duration",
-      "stipend",
-      "projectTitle",
-      "status"
+      "paperTitle",
+      "indexing",
+      "impactFactor",
+      "publicationLink"
     ];
 
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));
     }
-
+    
     const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
     let jsonData = [];
 
     if (fileExtension === "xls" || fileExtension === "xlsx") {
       const workbook = xlsx.readFile(req.file.path);
       const sheetName = workbook.SheetNames[0];
+
       if (!sheetName) {
         fs.unlinkSync(req.file.path);
         return next(new ApiError(400, "No sheets found in the Excel file"));
       }
+
       const sheet = workbook.Sheets[sheetName];
       jsonData = xlsx.utils.sheet_to_json(sheet);
     } else if (fileExtension === "csv") {
@@ -42,6 +44,7 @@ const uploadInternshipData = async (req, res, next) => {
           .on("end", () => resolve())
           .on("error", (error) => reject(error));
       });
+
       jsonData = csvData;
     } else {
       fs.unlinkSync(req.file.path);
@@ -65,19 +68,19 @@ const uploadInternshipData = async (req, res, next) => {
       if (!entry.studentName || !entry.enrollmentNumber || !entry.branch) {
         throw new ApiError(400, "Missing required fields: studentName, enrollmentNumber, or branch");
       }
+
       return {
         studentName: entry.studentName.trim(),
         enrollmentNumber: entry.enrollmentNumber.trim(),
         branch: entry.branch.trim(),
-        companyName: entry.companyName?.trim() || "",
-        duration: entry.duration?.trim() || "",
-        stipend: entry.stipend?.trim() || "",
-        projectTitle: entry.projectTitle?.trim() || "",
-        status: entry.status?.trim() || "",
+        paperTitle: entry.paperTitle?.trim() || "",
+        indexing: entry.indexing?.trim() || "",
+        impactFactor: entry.impactFactor?.trim() || "",
+        publicationLink: entry.publicationLink?.trim() || ""
       };
     });
 
-    await Intership.insertMany(validatedData);
+    await ResearchPaperPublication.insertMany(validatedData);
 
     res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
@@ -86,29 +89,35 @@ const uploadInternshipData = async (req, res, next) => {
   }
 };
 
-const getInternshipData = async (req, res, next) => {
+const getResearchPaperData = async (req, res, next) => {
   try {
-    const data = await Intership.find({}).limit(50);
-     console.log(data)
+    const data = await ResearchPaperPublication.find();
+
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
     }
+
     res.status(200).json({ success: true, message: "Data fetched successfully", data });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-const deleteAllInternshipData = async (req, res, next) => {
+const deleteAllResearchPaperData = async (req, res, next) => {
   try {
-    const result = await Intership.deleteMany({});
+    const result = await ResearchPaperPublication.deleteMany({});
+
     if (result.deletedCount === 0) {
-      return next(new ApiError(404, "No internship data found to delete"));
+      return next(new ApiError(404, "No research paper data found to delete"));
     }
-    res.status(200).json({ success: true, message: "All internship data deleted successfully" });
+
+    res.status(200).json({
+      success: true,
+      message: "All research paper data deleted successfully",
+    });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-export { uploadInternshipData, getInternshipData, deleteAllInternshipData };
+export { uploadResearchPaperData, getResearchPaperData, deleteAllResearchPaperData };
