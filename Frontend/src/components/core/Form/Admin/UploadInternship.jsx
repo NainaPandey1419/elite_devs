@@ -78,7 +78,7 @@ export default function UploadInternship({action}) {
       setUploadStatus("error");
       return;
     }
-    return await uploadInternShipData(dispatch,data);
+    return await uploadInternShipData(dispatch,data.file);
   };
 
   const formatFileSize = (bytes) => {

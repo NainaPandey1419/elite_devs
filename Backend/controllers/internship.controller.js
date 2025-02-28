@@ -1,7 +1,7 @@
 import fs from "fs";
 import xlsx from "xlsx";
 import csvParser from "csv-parser";
-import Internship from "../models/internship.model.js";
+import Intership from "../models/internship.model.js";
 import ApiError from "../utills/error.utills.js";
 
 const uploadInternshipData = async (req, res, next) => {
@@ -20,25 +20,20 @@ const uploadInternshipData = async (req, res, next) => {
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));
     }
-    
 
     const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
     let jsonData = [];
 
     if (fileExtension === "xls" || fileExtension === "xlsx") {
-      // Process Excel files
       const workbook = xlsx.readFile(req.file.path);
       const sheetName = workbook.SheetNames[0];
-
       if (!sheetName) {
         fs.unlinkSync(req.file.path);
         return next(new ApiError(400, "No sheets found in the Excel file"));
       }
-
       const sheet = workbook.Sheets[sheetName];
       jsonData = xlsx.utils.sheet_to_json(sheet);
     } else if (fileExtension === "csv") {
-      // Process CSV files
       const csvData = [];
       await new Promise((resolve, reject) => {
         fs.createReadStream(req.file.path)
@@ -47,20 +42,18 @@ const uploadInternshipData = async (req, res, next) => {
           .on("end", () => resolve())
           .on("error", (error) => reject(error));
       });
-
       jsonData = csvData;
     } else {
       fs.unlinkSync(req.file.path);
       return next(new ApiError(400, "Invalid file format. Please upload .xls, .xlsx, or .csv"));
     }
 
-    fs.unlinkSync(req.file.path); // Delete file after reading
+    fs.unlinkSync(req.file.path);
 
     if (jsonData.length === 0) {
       return next(new ApiError(404, "No data found in the file"));
     }
 
-    // Validate column headers
     const headers = Object.keys(jsonData[0]);
     const isValidFormat = REQUIRED_COLUMNS.every((col) => headers.includes(col));
 
@@ -68,12 +61,10 @@ const uploadInternshipData = async (req, res, next) => {
       return next(new ApiError(401, "Invalid file format. Ensure required columns exist"));
     }
 
-    // Validate and format data
     const validatedData = jsonData.map((entry) => {
       if (!entry.studentName || !entry.enrollmentNumber || !entry.branch) {
         throw new ApiError(400, "Missing required fields: studentName, enrollmentNumber, or branch");
       }
-
       return {
         studentName: entry.studentName.trim(),
         enrollmentNumber: entry.enrollmentNumber.trim(),
@@ -86,7 +77,7 @@ const uploadInternshipData = async (req, res, next) => {
       };
     });
 
-    await Internship.insertMany(validatedData);
+    await Intership.insertMany(validatedData);
 
     res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
@@ -97,12 +88,10 @@ const uploadInternshipData = async (req, res, next) => {
 
 const getInternshipData = async (req, res, next) => {
   try {
-    const data = await Internship.find();
-
+    const data = await Intership.find();
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
     }
-
     res.status(200).json({ success: true, message: "Data fetched successfully", data });
   } catch (error) {
     return next(new ApiError(500, error.message));
@@ -110,21 +99,15 @@ const getInternshipData = async (req, res, next) => {
 };
 
 const deleteAllInternshipData = async (req, res, next) => {
-    try {
-      
-      const result = await Internship.deleteMany({});
-  
-      if (result.deletedCount === 0) {
-        return next(new ApiError(404, "No internship data found to delete"));
-      }
-  
-      res.status(200).json({
-        success: true,
-        message: "All internship data deleted successfully",
-      });
-    } catch (error) {
-      return next(new ApiError(500, error.message));
+  try {
+    const result = await Intership.deleteMany({});
+    if (result.deletedCount === 0) {
+      return next(new ApiError(404, "No internship data found to delete"));
     }
-  };
+    res.status(200).json({ success: true, message: "All internship data deleted successfully" });
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
+};
 
-export { uploadInternshipData, getInternshipData ,deleteAllInternshipData};
+export { uploadInternshipData, getInternshipData, deleteAllInternshipData };
