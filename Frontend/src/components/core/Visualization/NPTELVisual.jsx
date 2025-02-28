@@ -66,21 +66,8 @@ export default function NPTELVisual() {
           Export as PDF
         </button>
         <h1>NPTEL Data Insights</h1>
-
-        {/* Bar Chart: Students Enrolled per Course */}
-        <h2>Students Enrolled per Course</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={courseData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="students" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
-
-        {/* Pie Chart: Enrollment Distribution by Department */}
-        <h2>Enrollment Distribution by Department</h2>
+{/* Pie Chart: Enrollment Distribution by Department */}
+<h2>Enrollment Distribution by Department</h2>
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
             <Pie
@@ -103,6 +90,19 @@ export default function NPTELVisual() {
             <Tooltip formatter={(value, name) => [`${value} students`, name]} />
           </PieChart>
         </ResponsiveContainer>
+        {/* Bar Chart: Students Enrolled per Course */}
+        <h2>Students Enrolled per Course</h2>
+        <ResponsiveContainer width="90%" height={300}>
+          <BarChart data={courseData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="students" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
+        
       </div>
     </div>
   );

@@ -75,7 +75,6 @@ function InternshipStats() {
 
   return (
     <div>
-      <Branches />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}
@@ -83,21 +82,10 @@ function InternshipStats() {
         >
           Export as PDF
         </button>
-        <h1>Internship Data Insights</h1>
+      <Branches />
+      <h1>Internship Data Insights</h1>
 
-        {/* Bar Chart: Students Selected per Company */}
-        <h2>Students Selected per Company</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={companyData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="students" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
-
-        {/* Pie Chart: Internship Distribution by Branch */}
+      {/* Pie Chart: Internship Distribution by Branch */}
         <h2>Internship Distribution by Branch</h2>
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
@@ -121,6 +109,20 @@ function InternshipStats() {
             <Tooltip formatter={(value, name) => [`${value} students`, name]} />
           </PieChart>
         </ResponsiveContainer>
+
+        {/* Bar Chart: Students Selected per Company */}
+        <h2>Students Selected per Company</h2>
+        <ResponsiveContainer width="90%" height={300}>
+          <BarChart data={companyData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="students" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
+        
       </div>
     </div>
   );

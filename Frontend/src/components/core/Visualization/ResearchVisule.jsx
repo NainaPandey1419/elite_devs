@@ -66,21 +66,8 @@ export default function ResearchVisual() {
           Export as PDF
         </button>
         <h1>Research Data Insights</h1>
-
-        {/* Bar Chart: Research Papers Published per Department */}
-        <h2>Research Papers Published per Department</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={departmentData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="papers" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
-
-        {/* Pie Chart: Research Papers by Type */}
-        <h2>Research Papers by Type</h2>
+{/* Pie Chart: Research Papers by Type */}
+<h2>Research Papers by Type</h2>
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
             <Pie
@@ -103,6 +90,19 @@ export default function ResearchVisual() {
             <Tooltip formatter={(value, name) => [`${value} papers`, name]} />
           </PieChart>
         </ResponsiveContainer>
+        {/* Bar Chart: Research Papers Published per Department */}
+        <h2>Research Papers Published per Department</h2>
+        <ResponsiveContainer width="90%" height={300}>
+          <BarChart data={departmentData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="papers" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
+        
       </div>
     </div>
   );

@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 const Branches = () => {
   const [selectedBranches, setSelectedBranches] = useState([
     "Computer Science",
-    "Electronics",
+    "Electrical",
+    "Electronics and Communication",
     "Mechanical",
-    "Civil",
-    "Electrical"
+    "Civil"
   ]);
 
   const toggleBranch = (branch) => {
@@ -19,7 +19,7 @@ const Branches = () => {
 
   return (
     <div className="flex flex-wrap gap-2 p-4">
-      {["Computer Science", "Electronics", "Mechanical", "Civil", "Electrical"].map((branch) => (
+      {["Computer Science", "Electrical", "Electronics and Communication", "Mechanical", "Civil"].map((branch) => (
         <button
           key={branch}
           onClick={() => toggleBranch(branch)}

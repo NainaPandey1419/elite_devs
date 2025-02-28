@@ -67,18 +67,6 @@ export default function PlacementVisual() {
         </button>
         <h1>Placement Data Insights</h1>
 
-        {/* Bar Chart: Students Placed per Company */}
-        <h2>Students Placed per Company</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={companyData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="students" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
-
         {/* Pie Chart: Placement Distribution by Branch */}
         <h2>Placement Distribution by Branch</h2>
         <ResponsiveContainer width="100%" height={400}>
@@ -103,6 +91,19 @@ export default function PlacementVisual() {
             <Tooltip formatter={(value, name) => [`${value} students`, name]} />
           </PieChart>
         </ResponsiveContainer>
+
+        {/* Bar Chart: Students Placed per Company */}
+        <h2>Students Placed per Company</h2>
+        <ResponsiveContainer width="90%" height={300}>
+          <BarChart data={companyData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="students" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
       </div>
     </div>
   );
