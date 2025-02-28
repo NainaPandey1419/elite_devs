@@ -7,6 +7,8 @@ import Home from './components/core/HomePage/Home'
 import InternshipStats from './components/core/Visualization/InternShip';
 import GateStats from './components/core/Visualization/GateVirtual';
 import CATStats from './components/core/Visualization/CAT';
+import NPTELVisual from './components/core/Visualization/NPTELVisual';
+import PlacementVisule from './components/core/Visualization/PlacementVisule';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/internships" element={<InternshipStats />} />
         <Route path="/gate" element={<GateStats />} />
         <Route path="/cat" element={<CATStats />} />
+        <Route path="/nptel" element={<NPTELVisual />} />
+        <Route path="/placement" element={<PlacementVisule />} />
       </Routes>
     </Router>
   );
