@@ -1,10 +1,11 @@
 import {Router} from "express";
-import { uploadCatData, getCatData,deleteAllCatData } from "../controllers/cat.controller.js";
+import { uploadCatData, getCatData,deleteAllCatData,getFilterCatData } from "../controllers/cat.controller.js";
 import uploadExcelSheet from "../middlewares/excel.middleware.js";
 
 const catRoute=Router()
 
 catRoute.get("/",getCatData);
+catRoute.post("/filter",getFilterCatData);
 catRoute.delete("/delete-all",deleteAllCatData);
 catRoute.post("/upload",(req,res,next)=>{
   console.log("I am in cat route 1")

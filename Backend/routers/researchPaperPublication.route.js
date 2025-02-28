@@ -1,10 +1,11 @@
 import {Router} from "express";
-import {  uploadResearchPaperData, getResearchPaperData, deleteAllResearchPaperData} from "../controllers/researchPaperPublication.controller.js ";
+import {  uploadResearchPaperData,getFilterResearchData, getResearchPaperData, deleteAllResearchPaperData} from "../controllers/researchPaperPublication.controller.js ";
 import uploadExcelSheet from "../middlewares/excel.middleware.js";
 
 const researchPaperRoute=Router()
 
 researchPaperRoute.get("/",getResearchPaperData);
+researchPaperRoute.post("/filter",getFilterResearchData);
 researchPaperRoute.delete("/delete-all",deleteAllResearchPaperData);
 //researchPaperRoute.post("/upload",uploadExcelSheet.single('researchData'),uploadResearchPaperData);
 

@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getFilterCATData, getFilterGATEData, getFilterInternShipData, getFilterPlacementData, getFilterResearchData } from '../../../operations/getData';
+import { useDispatch } from 'react-redux';
+import { fetchedDataSliceAction } from '../../../store/slices/FetchedDataSlice';
 
-const Branches = () => {
-  const [selectedBranches, setSelectedBranches] = useState([
-    "Computer Science",
-    "Electrical",
-    "Electronics and Communication",
-    "Mechanical",
-    "Civil"
-  ]);
+const Branches = ({action}) => {
+  const dispatch = useDispatch();
+
+  const [selectedBranches, setSelectedBranches] = useState([]);
 
   const toggleBranch = (branch) => {
     setSelectedBranches((prev) =>
@@ -16,10 +15,40 @@ const Branches = () => {
         : [...prev, branch] // Add if not selected
     );
   };
+  
+  // Run getFilterInternShipData whenever selectedBranches changes
+ if(action==='internship'){
+   useEffect(() => {
+     getFilterInternShipData(dispatch, selectedBranches);
+   }, [selectedBranches, dispatch]);
+
+ }
+ else if(action==='placement'){
+  useEffect(() => {
+    getFilterPlacementData(dispatch, selectedBranches);
+  }, [selectedBranches, dispatch]);
+ }
+ else if(action==='gate'){
+  useEffect(() => {
+    getFilterGATEData(dispatch, selectedBranches);
+  }, [selectedBranches, dispatch]);
+ }
+ else if(action==='cat'){
+  useEffect(() => {
+    getFilterCATData(dispatch, selectedBranches);
+  }, [selectedBranches, dispatch]);
+ }
+ else if(action==='research'){
+  useEffect(() => {
+    getFilterResearchData(dispatch, selectedBranches);
+  }, [selectedBranches, dispatch]);
+ }
+
+
 
   return (
     <div className="flex flex-wrap gap-2 p-4">
-      {["Computer Science", "Electrical", "Electronics and Communication", "Mechanical", "Civil"].map((branch) => (
+      {["CSE", "ECE","IT", "ME", "Civil","EE"].map((branch) => (
         <button
           key={branch}
           onClick={() => toggleBranch(branch)}

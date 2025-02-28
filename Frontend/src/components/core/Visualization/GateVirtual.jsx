@@ -103,7 +103,7 @@ function GATEStats() {
         color: "#333",
       }}
     >
-      <Branches />
+      <Branches action={'gate'} />
 
       <button
         onClick={exportPDF}

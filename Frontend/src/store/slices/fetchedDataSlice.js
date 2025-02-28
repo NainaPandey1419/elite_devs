@@ -7,6 +7,9 @@ const fetchedDataSlice  = createSlice({
     setFetchedData:(state,action)=>{
      return [...action.payload]
     },
+    setEmptyData:(state)=>{
+      return [];
+    }
   }
 })
 
