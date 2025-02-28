@@ -64,7 +64,7 @@ export default function UploadResearchPaper({ action }) {
       setUploadStatus("error");
       return;
     }
-    console.log("File submitted:", data);
+    console.log("File submitted:", data.file);
   };
 
   const formatFileSize = (bytes) => {

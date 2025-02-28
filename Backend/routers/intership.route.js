@@ -7,10 +7,12 @@ const intershipRoute=Router()
 intershipRoute.get("/",getInternshipData);
 intershipRoute.delete("/delete-all",deleteAllInternshipData);
 
-intershipRoute.post("/upload",uploadExcelSheet.single('internshipData'),(req,res,next)=>{
-    console.log("I am in intership route")
-    console.log(req.body?.intershipData)
-    console.log(req.file?.['intershipData'])
+intershipRoute.post("/upload",(req,res,next)=>{
+    console.log("I am in intership route 1")
+    next();
+},uploadExcelSheet.single('intershipData'),(req,res,next)=>{
+    console.log(req.file);
+    console.log("I am in intership route 2")
     next();
 },uploadInternshipData);
 

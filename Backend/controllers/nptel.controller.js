@@ -1,12 +1,20 @@
 import fs from "fs";
 import xlsx from "xlsx";
 import csvParser from "csv-parser";
-import Placement from "../models/placement.model.js";
+import Nptel from "../models/nptel.model.js";
 import ApiError from "../utills/error.utills.js";
 
-const uploadPlacementData = async (req, res, next) => {
+const uploadNptelData = async (req, res, next) => {
   try {
-    const REQUIRED_COLUMNS = ["studentName","companyName", "enrollmentNumber", "branch"];
+    const REQUIRED_COLUMNS = [
+      "studentName",
+      "enrollmentNumber",
+      "branch",
+      "courseName",
+      "score",
+      "certificateType",
+      "duration"
+    ];
 
     if (!req.file) {
       return next(new ApiError(400, "No file uploaded"));
@@ -56,53 +64,56 @@ const uploadPlacementData = async (req, res, next) => {
     }
 
     const validatedData = jsonData.map((entry) => {
-      if (!entry.studentName || !entry.enrollmentNumber || !entry.branch || !entry.companyName) {
-        throw new ApiError(400, "Missing required fields: studentName, enrollmentNumber, branch, or companyName");
+      if (!entry.studentName || !entry.courseName || !entry.score || !entry.branch) {
+        throw new ApiError(400, "Missing required fields: studentName, courseName, score, or branch");
       }
 
       return {
         studentName: entry.studentName.trim(),
-        enrollmentNumber: entry.enrollmentNumber.trim(),
+        enrollmentNumber: entry.enrollmentNumber?.trim() || "",
         branch: entry.branch.trim(),
-        companyName: entry.companyName.trim(),
+        courseName: entry.courseName.trim(),
+        score: entry.score.toString().trim(),
+        certificateType: entry.certificateType?.trim() || "",
+        duration: entry.duration?.trim() || "",
       };
     });
 
-    await Placement.insertMany(validatedData);
+    await Nptel.insertMany(validatedData);
 
-    res.status(200).json({ success: true, message: "Placement data uploaded successfully", data: validatedData });
+    res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
     if (req.file?.path) fs.unlinkSync(req.file.path);
     return next(new ApiError(500, error.message));
   }
 };
 
-const getPlacementData = async (req, res, next) => {
+const getNptelData = async (req, res, next) => {
   try {
-    const data = await Placement.find();
+    const data = await Nptel.find();
 
     if (data.length === 0) {
-      return next(new ApiError(404, "No placement data found"));
+      return next(new ApiError(404, "No data found"));
     }
 
-    res.status(200).json({ success: true, message: "Placement data fetched successfully", data });
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-const deleteAllPlacementData = async (req, res, next) => {
+const deleteAllNptelData = async (req, res, next) => {
   try {
-    const result = await Placement.deleteMany({});
+    const result = await Nptel.deleteMany({});
 
     if (result.deletedCount === 0) {
-      return next(new ApiError(404, "No placement data found to delete"));
+      return next(new ApiError(404, "No NPTEL data found to delete"));
     }
 
-    res.status(200).json({ success: true, message: "All placement data deleted successfully" });
+    res.status(200).json({ success: true, message: "All NPTEL data deleted successfully" });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }
 };
 
-export { uploadPlacementData, getPlacementData, deleteAllPlacementData };
+export { uploadNptelData, getNptelData, deleteAllNptelData };

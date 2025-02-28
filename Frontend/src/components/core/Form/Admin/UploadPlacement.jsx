@@ -66,7 +66,7 @@ export default function UploadPlacement({ action }) {
       setUploadStatus("error");
       return;
     }
-    return await uploadPlacementData(dispatch, data);
+    return await uploadPlacementData(dispatch, data.file);
   };
 
   const formatFileSize = (bytes) => {

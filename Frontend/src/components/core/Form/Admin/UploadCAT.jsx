@@ -65,7 +65,8 @@ export default function uploadCAT({ action }) {
       setUploadStatus("error");
       return;
     }
-    return await uploadCATData(dispatch, data);
+    console.log(data.file)
+    return await uploadCATData(dispatch, data.file);
   };
 
   const formatFileSize = (bytes) => {
