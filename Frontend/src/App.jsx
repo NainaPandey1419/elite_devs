@@ -9,6 +9,7 @@ import CATStats from './components/core/Visualization/CAT';
 import NPTELVisual from './components/core/Visualization/NPTELVisual';
 import PlacementVisule from './components/core/Visualization/PlacementVisule';
 import ResearchVisule from './components/core/Visualization/ResearchVisule';
+import AnnualReport from './components/core/Visualization/AnnualReport';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/nptel" element={<NPTELVisual />} /> 
         <Route path="/placement" element={<PlacementVisule />} />
         <Route path="/research" element={<ResearchVisule />} />
+        <Route path="/annual-report" element={<AnnualReport />} />
       </Routes>
     </Router>
   );

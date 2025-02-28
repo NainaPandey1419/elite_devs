@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [userRole, setUserRole] = useState("student");
   const [currUploadFormId, setCurrUploadFormId] = useState("");
   const [currUploadFormLabel, setCurrUploadFormLabel] = useState("");
-  
+
   const departments = [
     "Computer Science",
     "Electronics",
@@ -23,8 +23,7 @@ const Dashboard = () => {
     "Electrical",
   ];
   const [showReport, setShowReport] = useState(false);
-  const reportData = useSelector(store=>store.fetchedData);
-  
+  const reportData = useSelector((store) => store.fetchedData);
 
   const roleAccess = {
     student: {
@@ -81,13 +80,18 @@ const Dashboard = () => {
     } else {
       setShowReport(false);
     }
-
-    // Handle other navigation actions as needed
   };
+  const handleNavigation = (item) => {
+    if (item.path) {
+      navigate(item.path);
+    }
+  };
+
   const commonNavItems = [
     { id: "home", label: "Home" },
     { id: "viewReport", label: "View Report" },
     { id: "contactUs", label: "Contact Us" },
+    { id: "annualReport", label: "Annual Report", path: "/annual-report" },
   ];
 
   const uploadActions = {
@@ -250,7 +254,13 @@ const Dashboard = () => {
                 {commonNavItems.map((item) => (
                   <li key={item.id} style={{ marginBottom: "8px" }}>
                     <a
-                      href={item.id === "home" ? "/" : `#${item.id}`}
+                      href={
+                        item.id === "annualReport"
+                          ? undefined
+                          : item.id === "home"
+                          ? "/"
+                          : `#${item.id}`
+                      }
                       style={{
                         display: "block",
                         padding: "8px",
@@ -259,8 +269,16 @@ const Dashboard = () => {
                         textDecoration: "none",
                         transition: "background-color 0.2s",
                         backgroundColor: "#1E1E1E",
+                        cursor: "pointer",
                       }}
-                      onClick={(e) => handleNavClick(item.id, e)}
+                      onClick={(e) => {
+                        if (item.id === "annualReport") {
+                          e.preventDefault();
+                          navigate("/annual-report");
+                        } else {
+                          handleNavClick(item.id, e);
+                        }
+                      }}
                       onMouseEnter={(e) =>
                         (e.target.style.backgroundColor = "#2a2a2a")
                       }
@@ -279,12 +297,11 @@ const Dashboard = () => {
                           marginTop: "4px",
                           padding: 0,
                         }}
-                      >
-                        
-                      </ul>
+                      ></ul>
                     )}
                   </li>
                 ))}
+
                 {(userRole === "faculty" || userRole === "admin") && (
                   <li
                     style={{
@@ -384,7 +401,6 @@ const Dashboard = () => {
                   ))}
               </ul>
             </nav>
-            
           </div>
 
           <div
@@ -406,7 +422,7 @@ const Dashboard = () => {
               Dashboard Overview
             </h2>
 
-             <div style={{ marginBottom: "24px" }}>
+            <div style={{ marginBottom: "24px" }}>
               <h3
                 style={{
                   fontWeight: "bold",
@@ -418,61 +434,61 @@ const Dashboard = () => {
                 {userRole} Dashboard
               </h3>
               <main
-              style={{
-                flex: 1,
-                padding: "20px",
-                backgroundColor: "#121212",
-                color: "white",
-              }}
-            >
-              {showReport ? (
-                <div>
-                  <h2>Report View</h2>
-                  <div
-                    style={{
-                      backgroundColor: "white",
-                      borderRadius: "4px",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <JsonTable data={reportData} />
+                style={{
+                  flex: 1,
+                  padding: "20px",
+                  backgroundColor: "#121212",
+                  color: "white",
+                }}
+              >
+                {showReport ? (
+                  <div>
+                    <h2>Report View</h2>
+                    <div
+                      style={{
+                        backgroundColor: "white",
+                        borderRadius: "4px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <JsonTable data={reportData} />
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div>
-                  <NavLink to="/internships">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
-                      Visualize Internship Reports
-                    </button>
-                  </NavLink>
-                  <NavLink to="/gate">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10 ">
-                      Visualize Gate Reports
-                    </button>
-                  </NavLink>
-                  <NavLink to="/cat">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
-                      Visualize CAT Reports
-                    </button>
-                  </NavLink>
-                  <NavLink to="/nptel">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
-                      Visualize NPTEL Reports
-                    </button>
-                  </NavLink>
-                  <NavLink to="/placement">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
-                      Visualize Placement Reports
-                    </button>
-                  </NavLink>
-                  <NavLink to="/research">
-                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
-                      Visualize Research Reports
-                    </button>
-                  </NavLink>
-                </div>
-              )}
-            </main>
+                ) : (
+                  <div>
+                    <NavLink to="/internships">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
+                        Visualize Internship Reports
+                      </button>
+                    </NavLink>
+                    <NavLink to="/gate">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10 ">
+                        Visualize Gate Reports
+                      </button>
+                    </NavLink>
+                    <NavLink to="/cat">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
+                        Visualize CAT Reports
+                      </button>
+                    </NavLink>
+                    <NavLink to="/nptel">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
+                        Visualize NPTEL Reports
+                      </button>
+                    </NavLink>
+                    <NavLink to="/placement">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
+                        Visualize Placement Reports
+                      </button>
+                    </NavLink>
+                    <NavLink to="/research">
+                      <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
+                        Visualize Research Reports
+                      </button>
+                    </NavLink>
+                  </div>
+                )}
+              </main>
               {userRole === "student" && (
                 <div
                   style={{
