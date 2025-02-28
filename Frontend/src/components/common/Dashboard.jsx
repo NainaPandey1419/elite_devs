@@ -11,21 +11,13 @@ const Dashboard = () => {
   const [userRole, setUserRole] = useState("student");
   const [currUploadFormId, setCurrUploadFormId] = useState("");
   const [currUploadFormLabel, setCurrUploadFormLabel] = useState("");
+  
   const departments = [
     "Computer Science",
     "Electronics",
     "Mechanical",
     "Civil",
     "Electrical",
-  ];
-  const years = ["2022", "2023", "2024", "2025"];
-  const categories = [
-    "Academic",
-    "Research Papers",
-    "Internship",
-    "GATE",
-    "CAT",
-    "Faculty Progress",
   ];
   const [showReport, setShowReport] = useState(false);
   const reportData = useSelector(store=>store.fetchedData);
@@ -278,29 +270,7 @@ const Dashboard = () => {
                           padding: 0,
                         }}
                       >
-                        {categories.map((category) => (
-                          <li key={category} style={{ marginBottom: "4px" }}>
-                            <a
-                              href={`#${category
-                                .toLowerCase()
-                                .replace(" ", "-")}`}
-                              style={{
-                                display: "block",
-                                padding: "4px 8px",
-                                fontSize: "14px",
-                                borderRadius: "4px",
-                                color: "#cccccc",
-                                textDecoration: "none",
-                                transition: "background-color 0.2s",
-                                hover: {
-                                  backgroundColor: "#2a2a2a",
-                                },
-                              }}
-                            >
-                              {category}
-                            </a>
-                          </li>
-                        ))}
+                        
                       </ul>
                     )}
                   </li>
@@ -426,141 +396,7 @@ const Dashboard = () => {
               Dashboard Overview
             </h2>
 
-            <div
-              style={{
-                marginBottom: "24px",
-                padding: "16px",
-                border: "1px solid #333333",
-                borderRadius: "8px",
-                backgroundColor: "#252525",
-              }}
-            >
-              <h3
-                style={{
-                  fontWeight: "medium",
-                  marginBottom: "12px",
-                }}
-              >
-                Filters
-              </h3>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: "16px",
-                }}
-              >
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "14px",
-                      fontWeight: "medium",
-                      color: "#cccccc",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    Year
-                  </label>
-                  <select
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      border: "1px solid #333333",
-                      borderRadius: "4px",
-                      backgroundColor: "#121212",
-                      color: "#ffffff",
-                    }}
-                  >
-                    <option value="">Select Year</option>
-                    {years.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "14px",
-                      fontWeight: "medium",
-                      color: "#cccccc",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    Branch/Department
-                  </label>
-                  <select
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      border: "1px solid #333333",
-                      borderRadius: "4px",
-                      backgroundColor: "#121212",
-                      color: "#ffffff",
-                    }}
-                  >
-                    <option value="">Select Department</option>
-                    {departments.map((dept) => (
-                      <option key={dept} value={dept}>
-                        {dept}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "14px",
-                      fontWeight: "medium",
-                      color: "#cccccc",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    Category
-                  </label>
-                  <select
-                    style={{
-                      width: "100%",
-                      padding: "8px",
-                      border: "1px solid #333333",
-                      borderRadius: "4px",
-                      backgroundColor: "#121212",
-                      color: "#ffffff",
-                    }}
-                  >
-                    <option value="">Select Category</option>
-                    {categories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <button
-                style={{
-                  marginTop: "16px",
-                  backgroundColor: "#2c5282",
-                  color: "white",
-                  padding: "8px 16px",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  transition: "background-color 0.2s",
-                  hover: {
-                    backgroundColor: "#3182ce",
-                  },
-                }}
-              >
-                Apply Filters
-              </button>
-            </div>
-
-            <div style={{ marginBottom: "24px" }}>
+             <div style={{ marginBottom: "24px" }}>
               <h3
                 style={{
                   fontWeight: "bold",
@@ -595,32 +431,32 @@ const Dashboard = () => {
               ) : (
                 <div>
                   <NavLink to="/internships">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize Internship Reports
                     </button>
                   </NavLink>
                   <NavLink to="/gate">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10 ">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10 ">
                       Visualize Gate Reports
                     </button>
                   </NavLink>
                   <NavLink to="/cat">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
                       Visualize CAT Reports
                     </button>
                   </NavLink>
                   <NavLink to="/nptel">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize NPTEL Reports
                     </button>
                   </NavLink>
                   <NavLink to="/placement">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize Placement Reports
                     </button>
                   </NavLink>
                   <NavLink to="/research">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                    <button className="bg-[#3182ce] text-white px-4 py-2 rounded mt-2">
                       Visualize Research Reports
                     </button>
                   </NavLink>
@@ -760,7 +596,7 @@ const Dashboard = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  {categories.length}
+                  6
                 </p>
               </div>
               <div
