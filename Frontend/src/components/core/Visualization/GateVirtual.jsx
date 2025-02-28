@@ -5,7 +5,7 @@ import {
   Cell,
   Tooltip,
   BarChart,
-  Bar,  
+  Bar,
   XAxis,
   YAxis,
   Legend,
@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import { getGATEData } from "../../../operations/getData";
 import { useDispatch, useSelector } from "react-redux";
+import exportPDF from "./exportPDF";
 
 const BRANCH_COLORS = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6"];
 const RANK_COLORS = "#3498db";
@@ -93,7 +94,21 @@ function GATEStats() {
     .filter((data) => data.students > 0); // Ensure only non-empty intervals are shown
 
   return (
-    <div style={{ textAlign: "center", padding: "20px", background: "#f8f9fa", color: "#333" }}>
+    <div
+      id="pdf-content"
+      style={{
+        textAlign: "center",
+        padding: "20px",
+        background: "#f8f9fa",
+        color: "#333",
+      }}
+    >
+      <button
+        onClick={exportPDF}
+        className="absolute top-2 right-5 bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Export as PDF
+      </button>
       <h2>GATE Exam Statistics</h2>
 
       {/* 🟢 Branch-wise Distribution (Donut Chart) */}
@@ -110,7 +125,10 @@ function GATEStats() {
             label={({ name, value }) => `${name} (${value})`}
           >
             {branchData.map((_, index) => (
-              <Cell key={`cell-${index}`} fill={BRANCH_COLORS[index % BRANCH_COLORS.length]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={BRANCH_COLORS[index % BRANCH_COLORS.length]}
+              />
             ))}
           </Pie>
           <Tooltip />
@@ -131,7 +149,10 @@ function GATEStats() {
             label={({ name, value }) => `${name} (${value})`}
           >
             {categoryData.map((_, index) => (
-              <Cell key={`cell-${index}`} fill={BRANCH_COLORS[index % BRANCH_COLORS.length]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={BRANCH_COLORS[index % BRANCH_COLORS.length]}
+              />
             ))}
           </Pie>
           <Tooltip />
@@ -141,7 +162,10 @@ function GATEStats() {
       {/* 🟠 Rank Distribution (Bar Chart with Smaller Intervals) */}
       <h3>Rank Distribution of GATE Participants</h3>
       <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={rankData} margin={{ top: 10, right: 30, left: 0, bottom: 20 }}>
+        <BarChart
+          data={rankData}
+          margin={{ top: 10, right: 30, left: 0, bottom: 20 }}
+        >
           <XAxis dataKey="name" stroke="#333" />
           <YAxis stroke="#333" />
           <Tooltip />

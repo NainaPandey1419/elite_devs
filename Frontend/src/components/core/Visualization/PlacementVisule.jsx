@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPlacementData } from '../../../operations/getData';
 import {
   BarChart,
   Bar,
@@ -10,37 +12,29 @@ import {
   Pie,
   Cell,
   ResponsiveContainer,
-  Treemap,
 } from "recharts";
-import { getInternShipData } from "../../../operations/getData";
-import { useDispatch, useSelector } from "react-redux";
 import exportPDF from "./exportPDF";
-function InternshipStats() {
+
+export default function PlacementVisual() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getInternShipData(dispatch);
+    getPlacementData(dispatch);
   }, []);
 
-  const internships = useSelector((store) => store.fetchedData);
+  const placementData = useSelector((store) => store.fetchedData);
 
-  if (internships.length === 0) {
+  if (placementData.length === 0) {
     return <div>Loading data...</div>;
   }
 
   const COLORS = [
-    "#0088FE",
-    "#00C49F",
-    "#FFBB28",
-    "#FF8042",
-    "#A569BD",
-    "#F1948A",
-    "#48C9B0",
+    "#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A", "#48C9B0"
   ];
 
-  // Students Selected per Company (Bar Chart)
-  const companyDistribution = internships.reduce((acc, intern) => {
-    acc[intern.companyName] = (acc[intern.companyName] || 0) + 1;
+  // Students Placed per Company (Bar Chart)
+  const companyDistribution = placementData.reduce((acc, record) => {
+    acc[record.companyName] = (acc[record.companyName] || 0) + 1;
     return acc;
   }, {});
 
@@ -49,21 +43,9 @@ function InternshipStats() {
     students: companyDistribution[company],
   }));
 
-  // Stipend Distribution by Company (Treemap)
-  const companyStipends = internships.reduce((acc, intern) => {
-    acc[intern.companyName] =
-      (acc[intern.companyName] || 0) + (intern.stipend || 0);
-    return acc;
-  }, {});
-
-  const stipendData = Object.keys(companyStipends).map((company) => ({
-    name: company,
-    stipend: companyStipends[company],
-  }));
-
-  // Distribution by Branch (Pie Chart)
-  const branchDistribution = internships.reduce((acc, intern) => {
-    acc[intern.branch] = (acc[intern.branch] || 0) + 1;
+  // Placement Distribution by Branch (Pie Chart)
+  const branchDistribution = placementData.reduce((acc, record) => {
+    acc[record.branch] = (acc[record.branch] || 0) + 1;
     return acc;
   }, {});
 
@@ -81,10 +63,10 @@ function InternshipStats() {
         >
           Export as PDF
         </button>
-        <h1>Internship Data Insights</h1>
+        <h1>Placement Data Insights</h1>
 
-        {/* Bar Chart: Students Selected per Company */}
-        <h2>Students Selected per Company</h2>
+        {/* Bar Chart: Students Placed per Company */}
+        <h2>Students Placed per Company</h2>
         <ResponsiveContainer width="90%" height={300}>
           <BarChart data={companyData}>
             <XAxis dataKey="name" />
@@ -95,8 +77,8 @@ function InternshipStats() {
           </BarChart>
         </ResponsiveContainer>
 
-        {/* Pie Chart: Internship Distribution by Branch */}
-        <h2>Internship Distribution by Branch</h2>
+        {/* Pie Chart: Placement Distribution by Branch */}
+        <h2>Placement Distribution by Branch</h2>
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>
             <Pie
@@ -123,5 +105,3 @@ function InternshipStats() {
     </div>
   );
 }
-
-export default InternshipStats;
