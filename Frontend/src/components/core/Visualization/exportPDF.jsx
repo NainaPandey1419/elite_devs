@@ -14,6 +14,7 @@ const exportPDF = async () => {
     const dataUrl = await domtoimage.toPng(element, {
       quality: 0.95,
       bgcolor: "#000", // Change background color if needed
+
     });
 
     const pdf = new jsPDF("p", "mm", "a4"); // A4 size: 210x297 mm
