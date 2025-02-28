@@ -126,3 +126,131 @@ export const getCATData = async (dispatch) => {
   }
 
 }
+
+// InternShip data Upload function handler
+export const getNPTELData = async (dispatch) => {
+  try {
+    dispatch(fetchSliceAction.serializeFetching());
+    const res = await axios.get(`http://localhost:4000/api/v1/nptel`)
+    console.log("GET NPTEL DATA RESPONSE ---->>:", res)
+    dispatch(fetchSliceAction.deserializeFetching());
+    if (res && res?.data?.success) {
+      dispatch(fetchedDataSliceAction.setFetchedData(res.data.data));
+      toast.success(res?.data?.message, {
+        style: {
+          background: '#001a00',
+          color: '#f2f2f2',
+          borderRadius: '0px',
+          width: '350px',
+          height:'40px',
+          padding:'0px 10px',
+          fontWeight: 900
+        },
+        position: 'bottom-center'
+      })
+    }
+  } catch (error) {
+    dispatch(fetchSliceAction.deserializeFetching());
+    console.log('GET NPTEL DATA ERROR :',error)
+    toast.error(error?.response?.data?.message, {
+      style: {
+        background: '#001a00',
+        color: '#f2f2f2',
+        borderRadius: '0px',
+        width: '400px',
+        height:'60px',
+        padding:'0px 20px',
+        fontWeight: 900
+      },
+      position: 'bottom-center'
+    });
+  }
+
+}
+
+// PLACEMENT data Upload function handler
+export const getPlacementData = async (dispatch) => {
+  try {
+    dispatch(fetchSliceAction.serializeFetching());
+    const res = await axios.get(`http://localhost:4000/api/v1/placement`)
+    console.log("GET PLACEMENT DATA RESPONSE ---->>:", res)
+    dispatch(fetchSliceAction.deserializeFetching());
+    if (res && res?.data?.success) {
+      dispatch(fetchedDataSliceAction.setFetchedData(res.data.data));
+      toast.success(res?.data?.message, {
+        style: {
+          background: '#001a00',
+          color: '#f2f2f2',
+          borderRadius: '0px',
+          width: '350px',
+          height:'40px',
+          padding:'0px 10px',
+          fontWeight: 900
+        },
+        position: 'bottom-center'
+      })
+    }
+  } catch (error) {
+    dispatch(fetchSliceAction.deserializeFetching());
+    console.log('GET PLACEMENT DATA ERROR :',error)
+    toast.error(error?.response?.data?.message, {
+      style: {
+        background: '#001a00',
+        color: '#f2f2f2',
+        borderRadius: '0px',
+        width: '400px',
+        height:'60px',
+        padding:'0px 20px',
+        fontWeight: 900
+      },
+      position: 'bottom-center'
+    });
+  }
+
+
+
+}
+
+// Research  data  function handler
+export const getResearchData = async (dispatch) => {
+  try {
+    dispatch(fetchSliceAction.serializeFetching());
+    const res = await axios.get(`http://localhost:4000/api/v1/research`);
+    
+    dispatch(fetchSliceAction.deserializeFetching());
+    console.log("GET RESEARCH DATA RESPONSE ---->>:", res)
+    if (res && res?.data?.success) {
+      dispatch(fetchedDataSliceAction.setFetchedData(res.data.data));
+      toast.success(res?.data?.message, {
+        style: {
+          background: '#001a00',
+          color: '#f2f2f2',
+          borderRadius: '0px',
+          width: '350px',
+          height:'40px',
+          padding:'0px 10px',
+          fontWeight: 900
+        },
+        position: 'bottom-center'
+      })
+    }
+  } catch (error) {
+    dispatch(fetchSliceAction.deserializeFetching());
+    console.log('GET RESEARCH DATA ERROR :',error)
+    toast.error(error?.response?.data?.message, {
+      style: {
+        background: '#001a00',
+        color: '#f2f2f2',
+        borderRadius: '0px',
+        width: '400px',
+        height:'60px',
+        padding:'0px 20px',
+        fontWeight: 900
+      },
+      position: 'bottom-center'
+    });
+  }
+
+
+
+}

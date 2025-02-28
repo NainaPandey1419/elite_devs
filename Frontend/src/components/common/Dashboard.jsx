@@ -3,6 +3,7 @@ import InputModal from "./InputFormModal";
 import JsonTable from "./Table";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { getInternShipData } from "../../operations/getData";
 
 const Dashboard = () => {
   const navigate = useNavigate();
