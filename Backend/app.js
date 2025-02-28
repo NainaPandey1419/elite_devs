@@ -8,6 +8,7 @@ import gateRoute from "./routers/gate.route.js"
 import catRoute from "./routers/cat.route.js";
 import placementRoute from "./routers/placement.route.js";
 import researchPaperRoute from "./routers/researchPaperPublication.route.js";
+import aiRoutes from "./routers/ai.routes.js";
 
 
 const app=express();
@@ -28,7 +29,7 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}));
 
 
 
-
+app.use("/api/v1/ai/", aiRoutes);
 app.use("/api/v1/user",userRoute);
 app.use("/api/v1/intership",intershipRoute);
 app.use("/api/v1/gate",gateRoute);
