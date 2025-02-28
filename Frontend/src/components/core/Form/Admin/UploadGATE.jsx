@@ -6,10 +6,13 @@ import { FiUploadCloud, FiX, FiFile } from "react-icons/fi";
 import { uploadGATEData } from '../../../../operations/Admin';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBtn from '../../../common/LoadingBtn';
+import { useNavigate } from 'react-router-dom';
 
 export default function UploadGATE({ action }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const fetching = useSelector(store => store.fetching);
+  const currUser = useSelector(store => store.auth);
 
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
@@ -65,7 +68,12 @@ export default function UploadGATE({ action }) {
       setUploadStatus("error");
       return;
     }
-    return await uploadGATEData(dispatch, data.file);
+    if (currUser.token && currUser.role === 'ADMIN') {
+      return await uploadGATEData(dispatch, data.file);
+    } else {
+      return navigate('/login');
+    }
+    
   };
 
   const formatFileSize = (bytes) => {
@@ -90,8 +98,8 @@ export default function UploadGATE({ action }) {
           <div
             {...getRootProps()}
             className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg ${isDragActive
-                ? "border-blue-400 bg-blue-50"
-                : "border-gray-300 hover:border-gray-400"
+              ? "border-blue-400 bg-blue-50"
+              : "border-gray-300 hover:border-gray-400"
               } ${uploadStatus === "error" ? "border-red-500" : ""}
             transition-all duration-200 ease-in-out cursor-pointer`}
           >

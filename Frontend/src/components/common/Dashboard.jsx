@@ -4,8 +4,11 @@ import JsonTable from "./Table";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getInternShipData } from "../../operations/getData";
+import { Toaster } from "react-hot-toast";
 
 const Dashboard = () => {
+  const currUser= useSelector(store=>store.auth);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [userRole, setUserRole] = useState("student");
@@ -128,6 +131,7 @@ const Dashboard = () => {
         fontFamily: "Arial, sans-serif",
       }}
     >
+      <Toaster/>
       <div
         style={{
           backgroundColor: "#1E1E1E",
@@ -158,6 +162,7 @@ const Dashboard = () => {
               gap: "16px",
             }}
           >
+            {currUser.role==='STUDENT' &&
             <button
               onClick={() => changeRole("student")}
               style={{
@@ -171,19 +176,23 @@ const Dashboard = () => {
             >
               Student View
             </button>
+            }
+            {currUser.role==='FACULTY' &&
             <button
-              onClick={() => changeRole("faculty")}
-              style={{
-                padding: "8px 12px",
-                borderRadius: "4px",
-                border: "none",
-                cursor: "pointer",
-                backgroundColor: userRole === "faculty" ? "#ffffff" : "#2a2a2a",
-                color: userRole === "faculty" ? "#121212" : "#ffffff",
-              }}
-            >
-              Faculty View
-            </button>
+            onClick={() => changeRole("faculty")}
+            style={{
+              padding: "8px 12px",
+              borderRadius: "4px",
+              border: "none",
+              cursor: "pointer",
+              backgroundColor: userRole === "faculty" ? "#ffffff" : "#2a2a2a",
+              color: userRole === "faculty" ? "#121212" : "#ffffff",
+            }}
+          >
+            Faculty View
+          </button>
+            }
+           { currUser.role==='ADMIN' &&
             <button
               onClick={() => changeRole("admin")}
               style={{
@@ -197,6 +206,7 @@ const Dashboard = () => {
             >
               Admin View
             </button>
+           }
           </div>
         </div>
       </div>

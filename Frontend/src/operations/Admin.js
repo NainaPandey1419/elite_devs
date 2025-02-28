@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { fetchSliceAction } from "../store/slices/fetchSlice";
 
 // InternShip data Upload function handler
-export const uploadInternShipData = async (dispatch, internshipData) => {
+export const uploadInternShipData = async (dispatch, internshipData,token) => {
   const data =new FormData();
   data.append('internshipData',internshipData);
   try {
@@ -15,6 +15,7 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
       // withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
+        'Authorisation': `Bearer ${token}`
       },
     })
     dispatch(fetchSliceAction.deserializeFetching());
@@ -28,7 +29,7 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
           width: '350px',
           height:'40px',
           padding:'0px 10px',
-          fontWeight: 900
+          fontWeight: 500
         },
         position: 'bottom-center'
       })
@@ -43,10 +44,10 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
         background: '#001a00',
         color: '#f2f2f2',
         borderRadius: '0px',
-        width: '400px',
-        height:'60px',
-        padding:'0px 20px',
-        fontWeight: 900
+        width: '350px',
+        height:'40px',
+        padding:'0px 10px',
+        fontWeight: 500
       },
       position: 'bottom-center'
     });
@@ -55,7 +56,7 @@ export const uploadInternShipData = async (dispatch, internshipData) => {
 }
 
 // Placement data Upload function handler
-export const uploadPlacementData = async (dispatch, placementDataFile) => {
+export const uploadPlacementData = async (dispatch, placementDataFile,token) => {
   try {
     const data = new FormData();
     data.append('placementData', placementDataFile);
@@ -64,6 +65,7 @@ export const uploadPlacementData = async (dispatch, placementDataFile) => {
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
+        'Authorisation': `Bearer ${token}`
       },
     })
     dispatch(fetchSliceAction.deserializeFetching());
@@ -77,7 +79,7 @@ export const uploadPlacementData = async (dispatch, placementDataFile) => {
           width: '350px',
           height:'40px',
           padding:'0px 10px',
-          fontWeight: 900
+          fontWeight: 500
         },
         position: 'bottom-center'
       })
@@ -92,10 +94,10 @@ export const uploadPlacementData = async (dispatch, placementDataFile) => {
         background: '#001a00',
         color: '#f2f2f2',
         borderRadius: '0px',
-        width: '400px',
-        height:'60px',
-        padding:'0px 20px',
-        fontWeight: 900
+        width: '350px',
+        height:'40px',
+        padding:'0px 10px',
+        fontWeight: 500
       },
       position: 'bottom-center'
     });
@@ -104,7 +106,7 @@ export const uploadPlacementData = async (dispatch, placementDataFile) => {
 }
 
 // GATE data Upload function handler
-export const uploadGATEData = async (dispatch, GATEDataFile) => {
+export const uploadGATEData = async (dispatch, GATEDataFile,token) => {
   try {
     const data = new FormData();
     data.append('gateData', GATEDataFile);
@@ -113,6 +115,7 @@ export const uploadGATEData = async (dispatch, GATEDataFile) => {
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
+        'Authorisation': `Bearer ${token}`
       },
     })
     dispatch(fetchSliceAction.deserializeFetching());
@@ -126,7 +129,7 @@ export const uploadGATEData = async (dispatch, GATEDataFile) => {
           width: '350px',
           height:'40px',
           padding:'0px 10px',
-          fontWeight: 900
+          fontWeight: 500
         },
         position: 'bottom-center'
       })
@@ -141,10 +144,10 @@ export const uploadGATEData = async (dispatch, GATEDataFile) => {
         background: '#001a00',
         color: '#f2f2f2',
         borderRadius: '0px',
-        width: '400px',
-        height:'60px',
-        padding:'0px 20px',
-        fontWeight: 900
+        width: '350px',
+        height:'40px',
+        padding:'0px 10px',
+        fontWeight: 500
       },
       position: 'bottom-center'
     });
@@ -153,7 +156,7 @@ export const uploadGATEData = async (dispatch, GATEDataFile) => {
 }
 
 // CAT data Upload function handler
-export const uploadCATData = async (dispatch, CATDataFile) => {
+export const uploadCATData = async (dispatch, CATDataFile,token) => {
   try {
     const data = new FormData();
     data.append('catData', CATDataFile);
@@ -162,6 +165,7 @@ export const uploadCATData = async (dispatch, CATDataFile) => {
       withCredentials: true, // Enables sending cookies/auth headers
       headers: {
         "Content-Type": "multipart/form-data",
+        'Authorisation': `Bearer ${token}`
       },
     })
     dispatch(fetchSliceAction.deserializeFetching());
@@ -175,7 +179,7 @@ export const uploadCATData = async (dispatch, CATDataFile) => {
           width: '350px',
           height:'40px',
           padding:'0px 10px',
-          fontWeight: 900
+          fontWeight: 500
         },
         position: 'bottom-center'
       })

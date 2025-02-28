@@ -6,10 +6,13 @@ import { FiUploadCloud, FiX, FiFile } from "react-icons/fi";
 import { uploadCATData } from '../../../../operations/Admin';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBtn from '../../../common/LoadingBtn';
+import { useNavigate } from 'react-router-dom';
 
 export default function uploadCAT({ action }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const fetching = useSelector(store => store.fetching);
+  const currUser = useSelector(store => store.auth);
 
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
@@ -65,8 +68,11 @@ export default function uploadCAT({ action }) {
       setUploadStatus("error");
       return;
     }
-    console.log(data.file)
-    return await uploadCATData(dispatch, data.file);
+    if(currUser.token && currUser.role==='ADMIN'){
+      return await uploadCATData(dispatch, data.file);
+    }else{
+     return navigate('/login');
+    }
   };
 
   const formatFileSize = (bytes) => {

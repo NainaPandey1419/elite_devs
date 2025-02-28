@@ -1,6 +1,7 @@
 import {Router} from "express";
-import {uploadInternshipData,getInternshipData,deleteAllInternshipData} from "../controllers/internship.controller.js";
+import {uploadInternshipData,getInternshipData,deleteAllInternshipData, getFilterInternShip} from "../controllers/internship.controller.js";
 import uploadExcelSheet from "../middlewares/excel.middleware.js";
+
 
 const intershipRoute=Router()
 
@@ -16,4 +17,5 @@ intershipRoute.post("/upload",(req,res,next)=>{
     next();
 },uploadInternshipData);
 
+intershipRoute.post('/filter',getFilterInternShip)
 export default intershipRoute;
