@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 
 export default function PlacementVisual() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ export default function PlacementVisual() {
 
   return (
     <div>
+      <Branches />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}
@@ -64,18 +66,6 @@ export default function PlacementVisual() {
           Export as PDF
         </button>
         <h1>Placement Data Insights</h1>
-
-        {/* Bar Chart: Students Placed per Company */}
-        <h2>Students Placed per Company</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={companyData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="students" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
 
         {/* Pie Chart: Placement Distribution by Branch */}
         <h2>Placement Distribution by Branch</h2>
@@ -101,6 +91,19 @@ export default function PlacementVisual() {
             <Tooltip formatter={(value, name) => [`${value} students`, name]} />
           </PieChart>
         </ResponsiveContainer>
+
+        {/* Bar Chart: Students Placed per Company */}
+        <h2>Students Placed per Company</h2>
+        <ResponsiveContainer width="90%" height={300}>
+          <BarChart data={companyData}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="students" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+
       </div>
     </div>
   );

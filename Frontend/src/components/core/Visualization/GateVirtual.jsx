@@ -14,6 +14,7 @@ import {
 import { getGATEData } from "../../../operations/getData";
 import { useDispatch, useSelector } from "react-redux";
 import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 
 const BRANCH_COLORS = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6"];
 const RANK_COLORS = "#3498db";
@@ -99,10 +100,11 @@ function GATEStats() {
       style={{
         textAlign: "center",
         padding: "20px",
-        background: "#f8f9fa",
         color: "#333",
       }}
     >
+      <Branches />
+
       <button
         onClick={exportPDF}
         className="absolute top-2 right-5 bg-blue-500 text-white px-4 py-2 rounded"

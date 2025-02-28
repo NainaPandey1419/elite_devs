@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import { getCATData } from "../../../operations/getData";
 import exportPDF from './exportPDF' 
+import Branches from "./Branches";
 
 
 function CATStats() {
@@ -99,6 +100,8 @@ function CATStats() {
 
   return (
     <div id="pdf-content" style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <Branches />
+     
       <button
           onClick={exportPDF}
           className="absolute top-2 right-5 bg-blue-500 text-white px-4 py-2 rounded"

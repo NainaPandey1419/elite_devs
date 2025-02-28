@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { getResearchData } from "../../../operations/getData";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getResearchData } from '../../../operations/getData';
 import {
   BarChart,
   Bar,
@@ -13,8 +13,10 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
+import exportPDF from "./exportPDF";
+import Branches from "./Branches";
 
-function ResearchVisule() {
+export default function ResearchVisule() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -113,4 +115,3 @@ function ResearchVisule() {
   );
 }
 
-export default ResearchVisule;
