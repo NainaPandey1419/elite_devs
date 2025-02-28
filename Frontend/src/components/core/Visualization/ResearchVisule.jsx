@@ -30,3 +30,4 @@ function ResearchVisule() {
   );
 }
 
+export default ResearchVisule;

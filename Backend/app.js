@@ -9,6 +9,7 @@ import catRoute from "./routers/cat.route.js";
 import placementRoute from "./routers/placement.route.js";
 import researchPaperRoute from "./routers/researchPaperPublication.route.js";
 import aiRoutes from "./routers/ai.routes.js";
+import nptelRoute from "./routers/nptel.route.js";
 
 
 const app=express();
@@ -36,6 +37,7 @@ app.use("/api/v1/gate",gateRoute);
 app.use("/api/v1/cat",catRoute);
 app.use("/api/v1/placement",placementRoute);
 app.use("/api/v1/research",researchPaperRoute);
+app.use("/api/v1/nptel",nptelRoute);
 
 
 app.use("/",(req,res)=>{

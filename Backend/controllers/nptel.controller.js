@@ -78,8 +78,8 @@ const uploadNptelData = async (req, res, next) => {
         duration: entry.duration?.trim() || "",
       };
     });
-
-    await Nptel.insertMany(validatedData);
+    console.log(validatedData);
+    //await Nptel.insertMany(validatedData);
 
     res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
