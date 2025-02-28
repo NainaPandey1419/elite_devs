@@ -609,17 +609,17 @@ const Dashboard = () => {
                       Visualize CAT Reports
                     </button>
                   </NavLink>
-                  <NavLink to="/internships">
+                  <NavLink to="/nptel">
                     <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize NPTEL Reports
                     </button>
                   </NavLink>
-                  <NavLink to="/internships">
+                  <NavLink to="/placement">
                     <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
                       Visualize Placement Reports
                     </button>
                   </NavLink>
-                  <NavLink to="/internships">
+                  <NavLink to="/research">
                     <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
                       Visualize Research Reports
                     </button>
