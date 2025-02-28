@@ -2,15 +2,18 @@ import toast from "react-hot-toast";
 import { authSliceAction } from "../store/slices/auth";
 import { fetchSliceAction } from "../store/slices/fetchSlice";
 import { authUpEndPoint } from "../endpoints/endPoint";
+import axios from "axios";
 
 // Signup function handler
 export const signUp = async (navigate, dispatch, signUpData) => {
   try {
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await authUpEndPoint(signUpData,'signup')
+    const res = await axios.post(`http://localhost:4000/api/v1/user/register`,signUpData,{
+      // withCredentials: true, // Enables sending cookies/auth headers
+    })
     dispatch(fetchSliceAction.deserializeFetching());
+    console.log("SIGNUP RESPONSE ---->>:", res)
     if (res && res?.data?.success) {
-      console.log("SIGNUP RESPONSE ---->>:", res)
       //SAVE USER INFO LOACL STORAGE 
       window.localStorage.setItem('currUser', JSON.stringify(res.data.currUser));
       dispatch(authSliceAction.setUserData(res.data.currUser))
@@ -53,7 +56,9 @@ export const signIn = async (navigate,dispatch,formData) => {
   console.log(formData)
   try {
     dispatch(fetchSliceAction.serializeFetching());
-    const res = await authUpEndPoint(formData,'login')
+    const res = await axios.post(`http://localhost:4000/api/v1/user/login`,formData,{
+      // withCredentials: true, // Enables sending cookies/auth headers
+    })
     dispatch(fetchSliceAction.deserializeFetching());
     if (res.data && res.data.success) {
       console.log("LOGIN RESPONSE --->>>", res)

@@ -12,16 +12,17 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-const corsOptions = {
-  origin:"*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-};
+// const corsOptions = {
+//   origin:"http://localhost:5173/",
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true
+// };
 
 // Use CORS Middleware
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.urlencoded({extended:true,limit:"16kb"}));
+
 
 
 

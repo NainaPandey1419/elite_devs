@@ -64,6 +64,7 @@ export default function UploadInternship({action}) {
       setUploadStatus("error");
       return;
     }
+
     return await uploadInternShipData(dispatch,data);
   };
 

@@ -7,6 +7,4 @@ const intershipRoute=Router()
 intershipRoute.get("/",getInternshipData);
 intershipRoute.post("/upload",uploadExcelSheet.single('internshipData'),uploadInternshipData);
 
-
-
 export default intershipRoute;
