@@ -88,12 +88,8 @@ const uploadInternshipData = async (req, res, next) => {
 
 const getInternshipData = async (req, res, next) => {
   try {
-<<<<<<< HEAD
-    const data = await Intership.find();
-=======
-    const data = await Internship.find({}).limit(50);
+    const data = await Intership.find({}).limit(50);
      console.log(data)
->>>>>>> c8f14185e5641126da1766e6475bcf5a4f8c9ef7
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
     }
