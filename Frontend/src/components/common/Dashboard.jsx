@@ -3,33 +3,19 @@ import InputModal from "./InputFormModal";
 import JsonTable from "./Table";
 
 const Dashboard = () => {
-  const [userRole, setUserRole] = useState("student");
-  const [currUploadFormId, setCurrUploadFormId] = useState("");
-  const [currUploadFormLabel, setCurrUploadFormLabel] = useState("");
-  const departments = [
-    "Computer Science",
-    "Electronics",
-    "Mechanical",
-    "Civil",
-    "Electrical",
-  ];
-  const years = ["2022", "2023", "2024", "2025"];
-  const categories = [
-    "Academic",
-    "Research Papers",
-    "Internship",
-    "GATE",
-    "CAT",
-    "Faculty Progress",
-  ];
-
+  const [userRole, setUserRole] = useState('student'); 
+  const [currUploadFormId ,setCurrUploadFormId ] = useState('');
+  const [currUploadFormLabel ,setCurrUploadFormLabel ] = useState('');
+  const departments = ['Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical'];
+  const years = ['2022', '2023', '2024', '2025'];
+  const categories = ['Academic', 'Research Papers', 'Internship', 'GATE', 'CAT', 'Faculty Progress'];
   const [showReport, setShowReport] = useState(false);
-
+  
   const reportData = [
     { id: 1, name: "John Doe", age: 28, isActive: true },
     { id: 2, name: "Jane Smith", age: 32, isActive: false },
-    { id: 3, name: "Bob Johnson", age: 45, isActive: true },
-  ];
+    { id: 3, name: "Bob Johnson", age: 45, isActive: true },
+  ];
 
   const roleAccess = {
     student: {
@@ -69,6 +55,10 @@ const Dashboard = () => {
       uploadPlacement: true,
     },
   };
+
+  const handleGetData = ()=>{
+    return getInternShipData(dispatch);
+  }
 
   const changeRole = (role) => {
     setUserRole(role);
@@ -241,38 +231,31 @@ const Dashboard = () => {
                 }}
               >
                 {commonNavItems.map((item) => (
-                  <li key={item.id} style={{ marginBottom: "8px" }}>
-                    <a
-                      href={item.id === "home" ? "/" : `#${item.id}`}
-                      style={{
-                        display: "block",
-                        padding: "8px",
-                        borderRadius: "4px",
-                        color: "#ffffff",
-                        textDecoration: "none",
-                        transition: "background-color 0.2s",
-                        backgroundColor: "#1E1E1E",
-                      }}
-                      onClick={(e) => handleNavClick(item.id, e)}
-                      onMouseEnter={(e) =>
-                        (e.target.style.backgroundColor = "#2a2a2a")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.target.style.backgroundColor = "#1E1E1E")
-                      }
-                    >
-                      {item.label}
-                    </a>
-
-                    {item.id === "categoryWise" && (
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          marginLeft: "16px",
-                          marginTop: "4px",
-                          padding: 0,
-                        }}
-                      >
+                  <li key={item.id} style={{ marginBottom: '8px' }}>
+                  <a 
+                    href={item.id === "home" ? "/" : `#${item.id}`} 
+                    style={{ 
+                      display: 'block',
+                      padding: '8px',
+                      borderRadius: '4px',
+                      color: '#ffffff',
+                      textDecoration: 'none',
+                      transition: 'background-color 0.2s',
+                      backgroundColor: '#1E1E1E'
+                    }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = '#2a2a2a'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = '#1E1E1E'}
+                  >
+                    {item.label}
+                  </a>
+                    
+                    {item.id === 'categoryWise' && (
+                      <ul style={{ 
+                        listStyle: 'none',
+                        marginLeft: '16px',
+                        marginTop: '4px',
+                        padding: 0
+                      }}>
                         {categories.map((category) => (
                           <li key={category} style={{ marginBottom: "4px" }}>
                             <a
@@ -791,17 +774,17 @@ const Dashboard = () => {
                         <button
                           key={action.id}
                           onClick={() => handleUpload(action.id)}
-                          style={{
-                            backgroundColor: "#2c5282",
-                            color: "white",
-                            padding: "12px",
-                            borderRadius: "4px",
-                            border: "none",
-                            cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            transition: "background-color 0.2s",
+                          style={{ 
+                            backgroundColor: '#2c5282',
+                            color: 'white',
+                            padding: '12px',
+                            borderRadius: '4px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background-color 0.2s',
                             hover: {
                               backgroundColor: "#3182ce",
                             },

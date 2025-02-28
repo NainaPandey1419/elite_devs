@@ -86,7 +86,8 @@ const uploadGateData = async (req, res, next) => {
 
 const getGateData = async (req, res, next) => {
   try {
-    const data = await Gate.find();
+    const data = await Gate.find({}).limit(100);
+    console.log(data);
 
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
