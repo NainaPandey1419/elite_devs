@@ -13,6 +13,8 @@ import {
 } from "recharts";
 import { getGATEData } from "../../../operations/getData";
 import { useDispatch, useSelector } from "react-redux";
+import exportPDF from './exportPDF' 
+
 
 const BRANCH_COLORS = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6"];
 const RANK_COLORS = "#3498db";
@@ -93,7 +95,7 @@ function GATEStats() {
     .filter((data) => data.students > 0); // Ensure only non-empty intervals are shown
 
   return (
-    <div style={{ textAlign: "center", padding: "20px", background: "#f8f9fa", color: "#333" }}>
+    <div id="pdf-content" style={{ textAlign: "center", padding: "20px", background: "#f8f9fa", color: "#333" }}>
       <h2>GATE Exam Statistics</h2>
 
       {/* 🟢 Branch-wise Distribution (Donut Chart) */}
@@ -149,6 +151,9 @@ function GATEStats() {
           <Bar dataKey="students" fill={RANK_COLORS} barSize={50} />
         </BarChart>
       </ResponsiveContainer>
+      <button onClick={exportPDF} className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+        Export as PDF
+      </button>
     </div>
   );
 }

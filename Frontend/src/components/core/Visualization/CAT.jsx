@@ -13,6 +13,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getCATData } from "../../../operations/getData";
+import exportPDF from './exportPDF' 
+
 
 function CATStats() {
   const dispatch = useDispatch();
@@ -96,7 +98,7 @@ function CATStats() {
   }));
 
   return (
-    <div style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div id="pdf-content" style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       <h1>CAT Exam Statistics</h1>
 
       {/* 🟢 Pie Chart: Branch-wise Distribution */}
@@ -132,6 +134,9 @@ function CATStats() {
           <Bar dataKey="count" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
+      <button onClick={exportPDF} className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+        Export as PDF
+      </button>
     </div>
   );
 }

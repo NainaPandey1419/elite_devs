@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import InputModal from "./InputFormModal";
 import JsonTable from "./Table";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const [userRole, setUserRole] = useState('student'); 
-  const [currUploadFormId ,setCurrUploadFormId ] = useState('');
-  const [currUploadFormLabel ,setCurrUploadFormLabel ] = useState('');
-  const departments = ['Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical'];
-  const years = ['2022', '2023', '2024', '2025'];
-  const categories = ['Academic', 'Research Papers', 'Internship', 'GATE', 'CAT', 'Faculty Progress'];
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [userRole, setUserRole] = useState("student");
+  const [currUploadFormId, setCurrUploadFormId] = useState("");
+  const [currUploadFormLabel, setCurrUploadFormLabel] = useState("");
+  const departments = [
+    "Computer Science",
+    "Electronics",
+    "Mechanical",
+    "Civil",
+    "Electrical",
+  ];
+  const years = ["2022", "2023", "2024", "2025"];
+  const categories = [
+    "Academic",
+    "Research Papers",
+    "Internship",
+    "GATE",
+    "CAT",
+    "Faculty Progress",
+  ];
   const [showReport, setShowReport] = useState(false);
+  const reportData = useSelector(store=>store.fetchedData);
   
-  const reportData = [
-    { id: 1, name: "John Doe", age: 28, isActive: true },
-    { id: 2, name: "Jane Smith", age: 32, isActive: false },
-    { id: 3, name: "Bob Johnson", age: 45, isActive: true },
-  ];
 
   const roleAccess = {
     student: {
@@ -56,9 +69,9 @@ const Dashboard = () => {
     },
   };
 
-  const handleGetData = ()=>{
+  const handleGetData = () => {
     return getInternShipData(dispatch);
-  }
+  };
 
   const changeRole = (role) => {
     setUserRole(role);
@@ -67,6 +80,7 @@ const Dashboard = () => {
     e.preventDefault();
 
     if (itemId === "viewReport") {
+      getInternShipData(dispatch);
       setShowReport(true);
     } else {
       setShowReport(false);
@@ -231,31 +245,38 @@ const Dashboard = () => {
                 }}
               >
                 {commonNavItems.map((item) => (
-                  <li key={item.id} style={{ marginBottom: '8px' }}>
-                  <a 
-                    href={item.id === "home" ? "/" : `#${item.id}`} 
-                    style={{ 
-                      display: 'block',
-                      padding: '8px',
-                      borderRadius: '4px',
-                      color: '#ffffff',
-                      textDecoration: 'none',
-                      transition: 'background-color 0.2s',
-                      backgroundColor: '#1E1E1E'
-                    }}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = '#2a2a2a'}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = '#1E1E1E'}
-                  >
-                    {item.label}
-                  </a>
-                    
-                    {item.id === 'categoryWise' && (
-                      <ul style={{ 
-                        listStyle: 'none',
-                        marginLeft: '16px',
-                        marginTop: '4px',
-                        padding: 0
-                      }}>
+                  <li key={item.id} style={{ marginBottom: "8px" }}>
+                    <a
+                      href={item.id === "home" ? "/" : `#${item.id}`}
+                      style={{
+                        display: "block",
+                        padding: "8px",
+                        borderRadius: "4px",
+                        color: "#ffffff",
+                        textDecoration: "none",
+                        transition: "background-color 0.2s",
+                        backgroundColor: "#1E1E1E",
+                      }}
+                      onClick={(e) => handleNavClick(item.id, e)}
+                      onMouseEnter={(e) =>
+                        (e.target.style.backgroundColor = "#2a2a2a")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.target.style.backgroundColor = "#1E1E1E")
+                      }
+                    >
+                      {item.label}
+                    </a>
+
+                    {item.id === "categoryWise" && (
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          marginLeft: "16px",
+                          marginTop: "4px",
+                          padding: 0,
+                        }}
+                      >
                         {categories.map((category) => (
                           <li key={category} style={{ marginBottom: "4px" }}>
                             <a
@@ -283,7 +304,6 @@ const Dashboard = () => {
                     )}
                   </li>
                 ))}
-
                 {(userRole === "faculty" || userRole === "admin") && (
                   <li
                     style={{
@@ -383,6 +403,7 @@ const Dashboard = () => {
                   ))}
               </ul>
             </nav>
+            
           </div>
 
           <div
@@ -550,28 +571,61 @@ const Dashboard = () => {
                 {userRole} Dashboard
               </h3>
               <main
-                style={{
-                  flex: 1,
-                  padding: "15px",
-                  backgroundColor: "#1e1e1e",
-                  color: "white",
-                }}
-              >
-                {showReport && (
-                  <div>
-                    <h2>Report View</h2>
-                    <div
-                      style={{
-                        backgroundColor: "white",
-                        borderRadius: "4px",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <JsonTable data={reportData} />
-                    </div>
+              style={{
+                flex: 1,
+                padding: "20px",
+                backgroundColor: "#121212",
+                color: "white",
+              }}
+            >
+              {showReport ? (
+                <div>
+                  <h2>Report View</h2>
+                  <div
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "4px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <JsonTable data={reportData} />
                   </div>
-                )}
-              </main>
+                </div>
+              ) : (
+                <div>
+                  <NavLink to="/internships">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                      Visualize Internship Reports
+                    </button>
+                  </NavLink>
+                  <NavLink to="/gate">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10 ">
+                      Visualize Gate Reports
+                    </button>
+                  </NavLink>
+                  <NavLink to="/cat">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                      Visualize CAT Reports
+                    </button>
+                  </NavLink>
+                  <NavLink to="/internships">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                      Visualize NPTEL Reports
+                    </button>
+                  </NavLink>
+                  <NavLink to="/internships">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2 mr-10">
+                      Visualize Placement Reports
+                    </button>
+                  </NavLink>
+                  <NavLink to="/internships">
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
+                      Visualize Research Reports
+                    </button>
+                  </NavLink>
+                </div>
+              )}
+            </main>
               {userRole === "student" && (
                 <div
                   style={{
@@ -774,17 +828,17 @@ const Dashboard = () => {
                         <button
                           key={action.id}
                           onClick={() => handleUpload(action.id)}
-                          style={{ 
-                            backgroundColor: '#2c5282',
-                            color: 'white',
-                            padding: '12px',
-                            borderRadius: '4px',
-                            border: 'none',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'background-color 0.2s',
+                          style={{
+                            backgroundColor: "#2c5282",
+                            color: "white",
+                            padding: "12px",
+                            borderRadius: "4px",
+                            border: "none",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "background-color 0.2s",
                             hover: {
                               backgroundColor: "#3182ce",
                             },
