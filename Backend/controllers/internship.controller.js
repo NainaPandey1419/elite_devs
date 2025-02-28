@@ -97,8 +97,8 @@ const uploadInternshipData = async (req, res, next) => {
 
 const getInternshipData = async (req, res, next) => {
   try {
-    const data = await Internship.find();
-
+    const data = await Internship.find({}).limit(50);
+     console.log(data)
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
     }

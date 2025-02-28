@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import InputModal from './InputFormModal';
+import { useDispatch } from 'react-redux';
+import { getInternShipData } from '../../operations/getData';
 
 const Dashboard = () => {
   const [userRole, setUserRole] = useState('student'); 
@@ -8,6 +10,8 @@ const Dashboard = () => {
   const departments = ['Computer Science', 'Electronics', 'Mechanical', 'Civil', 'Electrical'];
   const years = ['2022', '2023', '2024', '2025'];
   const categories = ['Academic', 'Research Papers', 'Internship', 'GATE', 'CAT', 'Faculty Progress'];
+  const dispatch =useDispatch();
+
   
   const roleAccess = {
     student: {
@@ -47,6 +51,10 @@ const Dashboard = () => {
       uploadPlacement: true
     }
   };
+
+  const handleGetData = ()=>{
+    return getInternShipData(dispatch);
+  }
 
   const changeRole = (role) => {
     setUserRole(role);
@@ -185,8 +193,9 @@ const Dashboard = () => {
               }}>
                 {commonNavItems.map((item) => (
                   <li key={item.id} style={{ marginBottom: '8px' }}>
-                  <a 
-                    href={item.id === "home" ? "/" : `#${item.id}`} 
+                  <button
+                  onClick={handleGetData} 
+                    // href={item.id === "home" ? "/" : `#${item.id}`} 
                     style={{ 
                       display: 'block',
                       padding: '8px',
@@ -196,11 +205,12 @@ const Dashboard = () => {
                       transition: 'background-color 0.2s',
                       backgroundColor: '#1E1E1E'
                     }}
+                 
                     onMouseEnter={(e) => e.target.style.backgroundColor = '#2a2a2a'}
                     onMouseLeave={(e) => e.target.style.backgroundColor = '#1E1E1E'}
                   >
                     {item.label}
-                  </a>
+                  </button>
                     
                     {item.id === 'categoryWise' && (
                       <ul style={{ 
@@ -583,7 +593,7 @@ const Dashboard = () => {
                       {uploadActions.faculty.map((action) => (
                         <button
                           key={action.id}
-                          onClick={() => handleUpload(action.id)}
+                          onClick={() => handleUpload(action)}
                           style={{ 
                             backgroundColor: '#2c5282',
                             color: 'white',
