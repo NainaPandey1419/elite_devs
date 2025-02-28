@@ -22,7 +22,7 @@ function App() {
         <Route path="/internships" element={<InternshipStats />} />
         <Route path="/gate" element={<GateStats />} />
         <Route path="/cat" element={<CATStats />} />
-        <Route path="/nptel" element={<NPTELVisual />} />
+        <Route path="/nptel" element={<NPTELVisual />} /> 
         <Route path="/placement" element={<PlacementVisule />} />
         <Route path="/research" element={<ResearchVisule />} />
       </Routes>

@@ -212,11 +212,11 @@ export const getPlacementData = async (dispatch) => {
 }
 
 // Research  data  function handler
-export const getResearchData = async (dispatch) => {
+export const  getResearchData = async (dispatch) => {
   try {
     dispatch(fetchSliceAction.serializeFetching());
     const res = await axios.get(`http://localhost:4000/api/v1/research`);
-    
+
     dispatch(fetchSliceAction.deserializeFetching());
     console.log("GET RESEARCH DATA RESPONSE ---->>:", res)
     if (res && res?.data?.success) {
