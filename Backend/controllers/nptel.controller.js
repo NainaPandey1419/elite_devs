@@ -78,8 +78,8 @@ const uploadNptelData = async (req, res, next) => {
         duration: entry.duration?.trim() || "",
       };
     });
-    console.log(validatedData);
-    //await Nptel.insertMany(validatedData);
+    // console.log(validatedData);
+    await Nptel.insertMany(validatedData);
 
     res.status(200).json({ success: true, message: "Data uploaded successfully", data: validatedData });
   } catch (error) {
@@ -91,6 +91,7 @@ const uploadNptelData = async (req, res, next) => {
 const getNptelData = async (req, res, next) => {
   try {
     const data = await Nptel.find();
+     console.log(data);
 
     if (data.length === 0) {
       return next(new ApiError(404, "No data found"));
@@ -111,6 +112,21 @@ const deleteAllNptelData = async (req, res, next) => {
     }
 
     res.status(200).json({ success: true, message: "All NPTEL data deleted successfully" });
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
+};
+
+const getFilterNptelData = async (req, res, next) => {
+  try {
+    const {branch } = req.body;
+    console.log(branch)
+    const data = await Nptel.find({branch:{$in:branch}}).limit(50);
+
+    if (data.length === 0) {
+      return next(new ApiError(404, "No data found"));
+    }
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
   } catch (error) {
     return next(new ApiError(500, error.message));
   }

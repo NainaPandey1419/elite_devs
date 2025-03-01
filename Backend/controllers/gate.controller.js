@@ -117,5 +117,20 @@ const deleteAllgateData = async (req, res, next) => {
   }
 };
 
+const getFilterGateData = async (req, res, next) => {
+  try {
+    const {branch } = req.body;
+    console.log(branch)
+    const data = await Gate.find({branch:{$in:branch}}).limit(50);
 
-export { uploadGateData, getGateData ,deleteAllgateData};
+    if (data.length === 0) {
+      return next(new ApiError(404, "No data found"));
+    }
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
+};
+
+
+export { uploadGateData, getGateData ,deleteAllgateData,getFilterGateData};

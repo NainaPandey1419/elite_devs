@@ -120,4 +120,19 @@ const deleteAllResearchPaperData = async (req, res, next) => {
   }
 };
 
-export { uploadResearchPaperData, getResearchPaperData, deleteAllResearchPaperData };
+const getFilterResearchData = async (req, res, next) => {
+  try {
+    const {branch } = req.body;
+    console.log(branch)
+    const data = await ResearchPaperPublication.find({branch:{$in:branch}}).limit(50);
+
+    if (data.length === 0) {
+      return next(new ApiError(404, "No data found"));
+    }
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
+};
+
+export { uploadResearchPaperData,getFilterResearchData, getResearchPaperData, deleteAllResearchPaperData };

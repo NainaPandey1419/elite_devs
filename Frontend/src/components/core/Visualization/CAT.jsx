@@ -100,7 +100,7 @@ function CATStats() {
 
   return (
     <div id="pdf-content" style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <Branches />
+      <Branches action={'cat'} />
      
       <button
           onClick={exportPDF}

@@ -25,6 +25,8 @@ export default function NPTELVisual() {
 
   const nptelData = useSelector((store) => store.fetchedData);
 
+  const filteredData=nptelData.filter((data)=>data.department==="Computer Science and Engineering");
+
   if (nptelData.length === 0) {
     return <div>Loading data...</div>;
   }

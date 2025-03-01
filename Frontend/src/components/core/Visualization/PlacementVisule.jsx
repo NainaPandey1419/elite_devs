@@ -57,7 +57,7 @@ export default function PlacementVisual() {
 
   return (
     <div>
-      <Branches />
+      <Branches action={'placement'} />
       <div id="pdf-content" className="relative text-center p-5 font-sans">
         <button
           onClick={exportPDF}

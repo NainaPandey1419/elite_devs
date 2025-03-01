@@ -113,4 +113,20 @@ const deleteAllInternshipData = async (req, res, next) => {
   }
 };
 
-export  { uploadInternshipData, getInternshipData, deleteAllInternshipData };
+const getFilterInternShip = async (req, res, next) => {
+  try {
+    const {branch } = req.body;
+    console.log(branch)
+    const data = await Intership.find({branch:{$in:branch}}).limit(50);
+
+    if (data.length === 0) {
+      return next(new ApiError(404, "No data found"));
+    }
+    res.status(200).json({ success: true, message: "Data fetched successfully", data });
+  } catch (error) {
+    return next(new ApiError(500, error.message));
+  }
+};
+
+
+export { uploadInternshipData, getInternshipData, deleteAllInternshipData ,getFilterInternShip};

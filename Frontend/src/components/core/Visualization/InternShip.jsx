@@ -16,6 +16,7 @@ import { getInternShipData } from "../../../operations/getData";
 import { useDispatch, useSelector } from "react-redux";
 import exportPDF from "./exportPDF";
 import Branches from "./Branches";
+import { ToastBar, Toaster } from "react-hot-toast";
 function InternshipStats() {
   const dispatch = useDispatch();
 
@@ -82,8 +83,9 @@ function InternshipStats() {
         >
           Export as PDF
         </button>
-      <Branches />
+      <Branches  action={'internship'}/>
       <h1>Internship Data Insights</h1>
+      <Toaster/>
 
       {/* Pie Chart: Internship Distribution by Branch */}
         <h2>Internship Distribution by Branch</h2>

@@ -44,8 +44,37 @@ Edit
 });
 
 const generateContent = async (data) => {
-  console.log(data);
-  const result = await model.generateContent(data);
+    const data1 = {
+        contents: [
+          {
+            parts: [
+              {
+                text: JSON.stringify([
+                  {
+                    studentName: "John Doe",
+                    enrollmentNumber: "123456",
+                    branch: "CSE",
+                    courseName: "Data Science",
+                    score: 95,
+                    certificateType: "Completion",
+                    duration: "3 Months"
+                  },
+                  {
+                    studentName: "Jane Smith",
+                    enrollmentNumber: "789101",
+                    branch: "ECE",
+                    courseName: "AI & ML",
+                    score: 90,
+                    certificateType: "Completion",
+                    duration: "4 Months"
+                  }
+                ])
+              }
+            ]
+          }
+        ]
+      };
+  const result = await model.generateContent(data1);
   return result.response.text();
 };
 
