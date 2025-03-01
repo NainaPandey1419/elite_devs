@@ -48,7 +48,7 @@ const Branches = ({action}) => {
 
   return (
     <div className="flex flex-wrap gap-2 p-4">
-      {["Computer Science", "Electrical", "Electronics and Communication", "Mechanical", "Civil"].map((branch) => (
+      {["CSE", "ECE","IT", "ME", "Civil","EE"].map((branch) => (
         <button
           key={branch}
           onClick={() => toggleBranch(branch)}

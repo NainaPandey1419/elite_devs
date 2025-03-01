@@ -5,9 +5,9 @@ import uploadExcelSheet from "../middlewares/excel.middleware.js";
 
 const intershipRoute=Router()
 
-intershipRoute.post("/filter",getFilterInternShip);
 
 intershipRoute.post("/filter",getFilterInternShip);
+
 intershipRoute.get("/",getInternshipData);
 
 
