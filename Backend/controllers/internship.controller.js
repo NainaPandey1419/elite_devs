@@ -99,19 +99,7 @@ const getInternshipData = async (req, res, next) => {
   }
 };
 
-const getFilterInternShip = async (req, res, next) => {
-  try {
-    const {branches } = req.body;
-    const data = await Intership.find({branch:{$in:branches}}).limit(50);
 
-    if (data.length === 0) {
-      return next(new ApiError(404, "No data found"));
-    }
-    res.status(200).json({ success: true, message: "Data fetched successfully", data });
-  } catch (error) {
-    return next(new ApiError(500, error.message));
-  }
-};
 
 const deleteAllInternshipData = async (req, res, next) => {
   try {
@@ -125,4 +113,4 @@ const deleteAllInternshipData = async (req, res, next) => {
   }
 };
 
-export { uploadInternshipData, getInternshipData, deleteAllInternshipData ,getFilterInternShip };
+export  { uploadInternshipData, getInternshipData, deleteAllInternshipData };

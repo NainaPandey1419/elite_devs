@@ -255,45 +255,4 @@ export const  getResearchData = async (dispatch) => {
 
 }
 
-// Research  data  function handler
-export const  getFilterInternShipData = async (dispatch,branches) => {
-  try {
-    dispatch(fetchSliceAction.serializeFetching());
-    const res = await axios.post(`http://localhost:4000/api/v1/internship/filter`,branches);
-    dispatch(fetchSliceAction.deserializeFetching());
-    console.log("GET RESEARCH DATA RESPONSE ---->>:", res)
-    if (res && res?.data?.success) {
-      dispatch(fetchedDataSliceAction.setFetchedData(res.data.data));
-      toast.success(res?.data?.message, {
-        style: {
-          background: '#001a00',
-          color: '#f2f2f2',
-          borderRadius: '0px',
-          width: '350px',
-          height:'40px',
-          padding:'0px 10px',
-          fontWeight: 900
-        },
-        position: 'bottom-center'
-      })
-    }
-  } catch (error) {
-    dispatch(fetchSliceAction.deserializeFetching());
-    console.log('GET RESEARCH DATA ERROR :',error)
-    toast.error(error?.response?.data?.message, {
-      style: {
-        background: '#001a00',
-        color: '#f2f2f2',
-        borderRadius: '0px',
-        width: '400px',
-        height:'60px',
-        padding:'0px 20px',
-        fontWeight: 900
-      },
-      position: 'bottom-center'
-    });
-  }
 
-
-
-}

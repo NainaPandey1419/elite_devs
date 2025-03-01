@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { getFilterInternShipData } from '../../../operations/getData';
+import { Toaster } from 'react-hot-toast';
+
 const Branches = () => {
-  const [selectedBranches, setSelectedBranches] = useState([
-    "Computer Science",
-    "Electrical",
-    "Electronics and Communication",
-    "Mechanical",
-    "Civil"
-  ]);
+  const dispatch = useDispatch();
+
+  const [selectedBranches, setSelectedBranches] = useState([]);
 
   const toggleBranch = (branch) => {
     setSelectedBranches((prev) =>
       prev.includes(branch)
         ? prev.filter((b) => b !== branch) // Remove if selected
         : [...prev, branch] // Add if not selected
-    );
+      );
   };
 
   return (
     <div className="flex flex-wrap gap-2 p-4">
-      {["Computer Science", "Electrical", "Electronics and Communication", "Mechanical", "Civil"].map((branch) => (
+      <Toaster/>
+      {["CS", "EE", "ECE", "ME", "Civil"].map((branch) => (
         <button
           key={branch}
           onClick={() => toggleBranch(branch)}
