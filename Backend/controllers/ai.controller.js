@@ -5,7 +5,7 @@ const getReview = async (req, res) => {
 
     const {data} = req.body;
 
-    if (!code) {
+    if (!data) {
       return res.status(400).json({ error: "Error while generating containt" });
     }
 

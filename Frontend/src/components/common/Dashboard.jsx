@@ -85,6 +85,7 @@ const Dashboard = () => {
     { id: "home", label: "Home" },
     { id: "viewReport", label: "View Report" },
     { id: "contactUs", label: "Contact Us" },
+    { id: "annualreport", label: "Annual Report", path:"" },
   ];
 
   const uploadActions = {
