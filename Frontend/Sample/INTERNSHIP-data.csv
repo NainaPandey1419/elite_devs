@@ -1,0 +1,101 @@
+studentName,enrollmentNumber,branch,companyName,duration,stipend,projectTitle,status
+Priya Sharma,0901CS221021,CSE,Apple,4 months,50500,Self-Driving Car Simulation,Completed
+Shivam Balakrishnan,0901EE221022,EE,Intel,4 months,51250,AI-Based Chatbot,Completed
+Bharti Rao,0901EE221023,EE,Netflix,1 months,52000,AR/VR Interactive Learning,Ongoing
+Tanya Iyengar,0901EC221024,ECE,Microsoft,1 months,53750,Machine Learning Stock Prediction,Completed
+Vivek Dwivedi,0901ME221025,ME,Intel,5 months,54500,AR/VR Interactive Learning,Ongoing
+Ananya Reddy,0901ME221026,ME,Tesla,4 months,55300,Cybersecurity Threat Detection,Completed
+Pooja Jha,0901ME221027,ME,Adobe,1 months,56800,Predictive Analytics for Healthcare,Completed
+Ananya Mehta,0901ME221028,ME,Adobe,6 months,57150,IoT Smart Home Automation,Completed
+Rashmi Bhatia,0901CS221029,CSE,Apple,1 months,58900,Machine Learning Stock Prediction,Completed
+Rajat Bhatt,0901CS221030,CSE,Intel,3 months,59600,AI-Based Chatbot,Ongoing
+Shruti Sarin,0901EC221031,ECE,Facebook,3 months,60400,AI-Based Chatbot,Ongoing
+Arjun Bhargava,0901EE221032,EE,Adobe,3 months,61100,E-Commerce Website,Ongoing
+Sanya Kulkarni,0901EC221033,ECE,Google,4 months,62850,AI-Based Chatbot,Completed
+Meera Prasad,0901CS221034,CSE,Google,6 months,63500,Machine Learning Stock Prediction,Completed
+Keshav Bali,0901EE221035,EE,Microsoft,2 months,64200,Blockchain for Secure Transactions,Ongoing
+Riya Singh,0901ME221036,ME,Google,4 months,65900,Cybersecurity Threat Detection,Completed
+Sumit Bhargava,0901CE221037,CE,Adobe,3 months,66650,IoT Smart Home Automation,Completed
+Aditi Nagpal,0901EC221038,ECE,Tesla,4 months,67300,AR/VR Interactive Learning,Ongoing
+Ishita Rao,0901ME221039,ME,Microsoft,1 months,68000,Cloud-Based Data Storage,Completed
+Aditi Bansal,0901ME221040,ME,Microsoft,3 months,69750,Cloud-Based Data Storage,Completed
+Manish Naidu,0901CS221041,CSE,Apple,2 months,70500,Blockchain for Secure Transactions,Ongoing
+Esha Naidu,0901CE221042,CE,Adobe,5 months,71250,AR/VR Interactive Learning,Ongoing
+Kunal Bhardwaj,0901ME221043,ME,Tesla,1 months,72000,Predictive Analytics for Healthcare,Ongoing
+Meera Kulkarni,0901EC221044,ECE,Google,4 months,73750,AR/VR Interactive Learning,Ongoing
+Ravindra Nagpal,0901CE221045,CE,Facebook,2 months,74500,AR/VR Interactive Learning,Ongoing
+Muskan Thakur,0901CS221046,CSE,Apple,5 months,75300,E-Commerce Website,Completed
+Rajat Saxena,0901EE221047,EE,Apple,2 months,76800,Blockchain for Secure Transactions,Ongoing
+Raj Iyer,0901ME221048,ME,Adobe,6 months,77150,Machine Learning Stock Prediction,Completed
+Mohit Trivedi,0901EC221049,ECE,Tesla,2 months,78900,Self-Driving Car Simulation,Completed
+Bharti Gupta,0901CS221050,CSE,Microsoft,4 months,79600,Cloud-Based Data Storage,Completed
+Rashmi Gupta,0901EC221051,ECE,Netflix,2 months,80400,Self-Driving Car Simulation,Ongoing
+Ayush Gupta,0901ME221052,ME,IBM,2 months,81100,IoT Smart Home Automation,Ongoing
+Rahul Chandra,0901EC221053,ECE,Adobe,2 months,82850,IoT Smart Home Automation,Completed
+Aditya Agarwal,0901EE221054,EE,Intel,3 months,83500,Predictive Analytics for Healthcare,Ongoing
+Meera Bagchi,0901EE221055,EE,Amazon,3 months,84200,Cybersecurity Threat Detection,Completed
+Manish Shinde,0901CS221056,CSE,Microsoft,5 months,85900,Blockchain for Secure Transactions,Completed
+Trisha Rana,0901CE221057,CE,Apple,4 months,86650,IoT Smart Home Automation,Completed
+Harsh Prajapati,0901EC221058,ECE,Google,4 months,87300,Cloud-Based Data Storage,Completed
+Asmita Venkatesh,0901EC221059,ECE,Microsoft,1 months,88000,Machine Learning Stock Prediction,Ongoing
+Siddharth Malhotra,0901CE221060,CE,Microsoft,4 months,89750,Self-Driving Car Simulation,Ongoing
+Esha Sehgal,0901ME221061,ME,Google,5 months,90500,Self-Driving Car Simulation,Ongoing
+Lakshay Das,0901ME221062,ME,Google,1 months,91250,Predictive Analytics for Healthcare,Completed
+Abhinav Jha,0901ME221063,ME,Amazon,6 months,92000,AI-Based Chatbot,Completed
+Mohit Mathur,0901EC221064,ECE,Microsoft,2 months,93750,AI-Based Chatbot,Completed
+Esha Reddy,0901EE221065,EE,IBM,2 months,94500,Cloud-Based Data Storage,Ongoing
+Arjun Vohra,0901ME221066,ME,Amazon,3 months,95300,E-Commerce Website,Completed
+Shreya Sharma,0901ME221067,ME,Netflix,3 months,96800,E-Commerce Website,Ongoing
+Akhil Krishna,0901ME221068,ME,Google,3 months,97150,Predictive Analytics for Healthcare,Completed
+Raghav Jha,0901CS221069,CSE,Facebook,3 months,98900,AI-Based Chatbot,Ongoing
+Ritu Mathur,0901EC221070,ECE,Google,1 months,99600,E-Commerce Website,Completed
+Anirudh Lal,0901EE221071,EE,Google,1 months,100400,Cybersecurity Threat Detection,Completed
+Simran Bose,0901CS221072,CSE,Microsoft,2 months,101100,Self-Driving Car Simulation,Completed
+Ishita Bose,0901ME221073,ME,Google,2 months,102850,Self-Driving Car Simulation,Completed
+Priya Dixit,0901EC221074,ECE,Amazon,1 months,103500,E-Commerce Website,Ongoing
+Anubhav Trivedi,0901CE221075,CE,Google,6 months,104200,Predictive Analytics for Healthcare,Completed
+Trisha Nagarajan,0901ME221076,ME,Apple,3 months,105900,Blockchain for Secure Transactions,Ongoing
+Anirudh Pandey,0901EC221077,ECE,Netflix,5 months,106650,Cloud-Based Data Storage,Ongoing
+Sumit Mishra,0901EE221078,EE,Microsoft,3 months,107300,Cloud-Based Data Storage,Completed
+Rohan Solanki,0901EE221079,EE,Facebook,2 months,108000,Cybersecurity Threat Detection,Completed
+Sumit Bhattacharya,0901ME221080,ME,Facebook,2 months,109750,Self-Driving Car Simulation,Ongoing
+Harsh Menon,0901EC221081,ECE,Adobe,6 months,110500,AI-Based Chatbot,Ongoing
+Sakshi Rajput,0901EE221082,EE,Apple,2 months,111250,Blockchain for Secure Transactions,Ongoing
+Shreya Grover,0901CE221083,CE,Microsoft,4 months,112000,AR/VR Interactive Learning,Completed
+Ayush Prajapati,0901EE221084,EE,Adobe,2 months,113750,E-Commerce Website,Completed
+Gaurav Bagchi,0901CE221085,CE,Tesla,3 months,114500,E-Commerce Website,Ongoing
+Juhi Joshi,0901CE221086,CE,Tesla,3 months,115300,Machine Learning Stock Prediction,Ongoing
+Bharti Dasgupta,0901CE221087,CE,Netflix,6 months,116800,Self-Driving Car Simulation,Completed
+Abhinav Mahajan,0901EE221088,EE,Amazon,3 months,117150,E-Commerce Website,Completed
+Pooja Bansal,0901EE221089,EE,Intel,4 months,118900,Machine Learning Stock Prediction,Ongoing
+Sonal Rajput,0901ME221090,ME,Facebook,4 months,119600,Machine Learning Stock Prediction,Ongoing
+Diya Desai,0901EC221091,ECE,Apple,3 months,120400,Self-Driving Car Simulation,Ongoing
+Priya Mahajan,0901EE221092,EE,Intel,5 months,121100,IoT Smart Home Automation,Ongoing
+Manish Grover,0901EE221093,EE,Facebook,5 months,122850,Machine Learning Stock Prediction,Completed
+Esha Banerjee,0901CE221094,CE,Adobe,4 months,123500,E-Commerce Website,Ongoing
+Rohan Thakur,0901EE221095,EE,Adobe,6 months,124200,Machine Learning Stock Prediction,Ongoing
+Nidhi De,0901CE221096,CE,Netflix,3 months,125900,Cybersecurity Threat Detection,Ongoing
+Harsh Jha,0901EE221097,EE,Google,1 months,126650,Predictive Analytics for Healthcare,Completed
+Vivekanand Bhardwaj,0901CE221098,CE,IBM,5 months,127300,Cloud-Based Data Storage,Completed
+Ritu Agarwal,0901ME221099,ME,Google,4 months,128000,AR/VR Interactive Learning,Completed
+Vikas Pandey,0901EC2210100,ECE,Facebook,5 months,129750,AI-Based Chatbot,Ongoing
+Vivekanand Bali,0901ME2210101,ME,Microsoft,1 months,130500,Self-Driving Car Simulation,Ongoing
+Bharti Chaudhary,0901EE2210102,EE,Amazon,3 months,131250,E-Commerce Website,Ongoing
+Jatin Bansal,0901EC2210103,ECE,Netflix,3 months,132000,IoT Smart Home Automation,Completed
+Karthik Purohit,0901EC2210104,ECE,Tesla,4 months,133750,Blockchain for Secure Transactions,Ongoing
+Karthik Tiwari,0901CE2210105,CE,Apple,3 months,134500,Predictive Analytics for Healthcare,Completed
+Kritika Vohra,0901EC2210106,ECE,Google,2 months,135300,Blockchain for Secure Transactions,Completed
+Nidhi Singh,0901ME2210107,ME,Netflix,2 months,136800,Cybersecurity Threat Detection,Completed
+Diya Iyer,0901EC2210108,ECE,Adobe,6 months,137150,AI-Based Chatbot,Ongoing
+Akhil Yadav,0901CS2210109,CSE,Facebook,1 months,138900,Cybersecurity Threat Detection,Ongoing
+Devansh Kashyap,0901CS2210110,CSE,Amazon,4 months,139600,E-Commerce Website,Completed
+Asmita Bali,0901CS2210111,CSE,Adobe,1 months,140400,Predictive Analytics for Healthcare,Completed
+Ishaan Bhargava,0901EE2210112,EE,Google,6 months,141100,Cybersecurity Threat Detection,Ongoing
+Diya Naidu,0901CS2210113,CSE,Amazon,5 months,142850,AI-Based Chatbot,Completed
+Sneha Rajput,0901CS2210114,CSE,Facebook,2 months,143500,AR/VR Interactive Learning,Ongoing
+Nikhil Seth,0901EE2210115,EE,Apple,1 months,144200,E-Commerce Website,Completed
+Akhil Solanki,0901ME2210116,ME,Netflix,4 months,103500,Machine Learning Stock Prediction,Completed
+Sumit Bhardwaj,0901EE2210117,EE,Apple,1 months,104200,E-Commerce Website,Completed
+Meera Bhatia,0901CS2210118,CSE,IBM,2 months,105900,E-Commerce Website,Ongoing
+Shubham Pathak,0901ME2210119,ME,Adobe,4 months,106650,Predictive Analytics for Healthcare,Completed
+Sandeep Chaturvedi,0901CS2210120,CSE,Facebook,6 months,86650,Self-Driving Car Simulation,Completed

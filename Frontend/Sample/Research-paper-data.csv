@@ -1,0 +1,101 @@
+studentName,enrollmentNumber,branch,paperTitle,indexing,impactFactor,publicationLink
+Aryan Patel,0901EC221064,ECE,VLSI in Embedded Systems,UGC,7.67,https://doi.org/10.1000/7235.57
+Aditya Singh,0901EC221064,ECE,Antenna Design for Satellites,Scopus,1.12,https://doi.org/10.1000/3748.84
+Kabir Mehta,0901CS221069,CSE,Quantum Computing Algorithms,SCI,5.03,https://doi.org/10.1000/7296.84
+Kunal Patel,0901CE221011,CE,AI in Urban Planning,Scopus,7.3,https://doi.org/10.1000/6218.59
+Vivaan Singh,0901CD221056,CSD,AI Ethics and Fairness,Scopus,2.01,https://doi.org/10.1000/6032.25
+Aarav Nair,0901CE221029,CE,AI in Urban Planning,SCI,7.47,https://doi.org/10.1000/9486.85
+Neel Verma,0901EE221031,EE,High Voltage Engineering,Scopus,4.44,https://doi.org/10.1000/3888.88
+Rahul Sharma,0901ME221013,ME,Thermal Management Systems,UGC,1.38,https://doi.org/10.1000/9686.92
+Rohan Mehta,0901CE221059,CE,Smart Highway Systems,SCI,1.05,https://doi.org/10.1000/7428.31
+Rohan Reddy,0901EC221057,ECE,Nanoelectronics in Communication,Scopus,5.1,https://doi.org/10.1000/3782.11
+Ishaan Sharma,0901CS221039,CSE,AI-Powered Cybersecurity,SCI,8.18,https://doi.org/10.1000/3051.74
+Kunal Chopra,0901EC221015,ECE,Nanoelectronics in Communication,UGC,1.59,https://doi.org/10.1000/3778.60
+Rahul Yadav,0901CS221028,CSE,AI-Powered Cybersecurity,SCI,3.83,https://doi.org/10.1000/6290.46
+Aditya Yadav,0901ME221057,ME,Smart Materials in Manufacturing,Scopus,6.51,https://doi.org/10.1000/2480.69
+Kunal Reddy,0901EE221068,EE,Smart Grid Technologies,UGC,7.9,https://doi.org/10.1000/7853.96
+Ishaan Verma,0901ME221020,ME,Robotic Process Automation,Scopus,4.86,https://doi.org/10.1000/4021.44
+Kunal Verma,0901CS221088,CSE,Deep Learning for Image Processing,Scopus,4.48,https://doi.org/10.1000/6941.96
+Aryan Singh,0901EE221043,EE,Renewable Energy Microgrids,Scopus,3.12,https://doi.org/10.1000/1651.32
+Ishaan Gupta,0901CE221033,CE,AI in Urban Planning,Scopus,4.27,https://doi.org/10.1000/2634.46
+Kabir Singh,0901EC221071,ECE,Wireless Sensor Networks,SCI,8.27,https://doi.org/10.1000/6089.45
+Rohan Mehta,0901CE221085,CE,Seismic Resistant Structures,UGC,5.12,https://doi.org/10.1000/4789.50
+Kunal Yadav,0901CE221092,CE,Seismic Resistant Structures,Scopus,7.09,https://doi.org/10.1000/6367.32
+Kabir Patel,0901EE221063,EE,High Voltage Engineering,UGC,9.14,https://doi.org/10.1000/7164.73
+Kabir Nair,0901EC221017,ECE,5G Network Optimization,Scopus,3.86,https://doi.org/10.1000/1211.79
+Aryan Gupta,0901EC221014,ECE,VLSI in Embedded Systems,UGC,5.44,https://doi.org/10.1000/4032.84
+Vivaan Reddy,0901CE221078,CE,Sustainable Concrete Technology,UGC,6.3,https://doi.org/10.1000/1757.12
+Vivaan Singh,0901CD221096,CSD,Cognitive Computing Applications,Scopus,5.94,https://doi.org/10.1000/7727.10
+Aryan Yadav,0901CE221039,CE,Seismic Resistant Structures,Scopus,1.84,https://doi.org/10.1000/3184.95
+Vivaan Mehta,0901EC221063,ECE,VLSI in Embedded Systems,Scopus,2.52,https://doi.org/10.1000/6473.17
+Vivaan Mehta,0901EE221045,EE,Renewable Energy Microgrids,Scopus,5.96,https://doi.org/10.1000/2659.42
+Neel Sharma,0901EC221047,ECE,VLSI in Embedded Systems,Scopus,3.06,https://doi.org/10.1000/3927.81
+Aryan Chopra,0901CE221061,CE,Smart Highway Systems,SCI,1.12,https://doi.org/10.1000/9845.34
+Aryan Patel,0901ME221016,ME,Advancements in 3D Printing,Scopus,5.57,https://doi.org/10.1000/4849.80
+Kabir Nair,0901EE221060,EE,Battery Storage Optimization,SCI,1.35,https://doi.org/10.1000/5192.63
+Neel Yadav,0901ME221016,ME,CFD in Aerodynamics,SCI,4.44,https://doi.org/10.1000/7249.27
+Kunal Reddy,0901EE221083,EE,Power Electronics for Electric Vehicles,SCI,2.91,https://doi.org/10.1000/4315.77
+Rohan Chopra,0901ME221076,ME,Advancements in 3D Printing,Scopus,2.15,https://doi.org/10.1000/1579.53
+Rohan Yadav,0901CE221025,CE,AI in Urban Planning,Scopus,2.66,https://doi.org/10.1000/7321.95
+Vivaan Yadav,0901CS221041,CSE,AI-Powered Cybersecurity,UGC,7.59,https://doi.org/10.1000/1039.20
+Ishaan Gupta,0901EE221048,EE,Power Electronics for Electric Vehicles,SCI,5.84,https://doi.org/10.1000/3245.42
+Aditya Gupta,0901CE221080,CE,Smart Highway Systems,UGC,8.22,https://doi.org/10.1000/4044.82
+Rahul Chopra,0901EE221096,EE,Smart Grid Technologies,UGC,5.28,https://doi.org/10.1000/2506.10
+Aryan Nair,0901ME221076,ME,Robotic Process Automation,SCI,8.79,https://doi.org/10.1000/1285.39
+Rahul Chopra,0901EC221072,ECE,5G Network Optimization,SCI,2.85,https://doi.org/10.1000/5264.83
+Rohan Patel,0901EE221089,EE,Smart Grid Technologies,Scopus,4.63,https://doi.org/10.1000/5094.86
+Kabir Chopra,0901EE221024,EE,Power Electronics for Electric Vehicles,SCI,3.66,https://doi.org/10.1000/1040.82
+Rohan Gupta,0901CS221074,CSE,AI-Powered Cybersecurity,Scopus,2.54,https://doi.org/10.1000/6877.50
+Rahul Sharma,0901EE221061,EE,Renewable Energy Microgrids,Scopus,5.21,https://doi.org/10.1000/4247.77
+Ishaan Yadav,0901CS221052,CSE,Deep Learning for Image Processing,Scopus,5.07,https://doi.org/10.1000/4816.79
+Ishaan Chopra,0901ME221049,ME,Robotic Process Automation,UGC,5.69,https://doi.org/10.1000/7137.56
+Kabir Singh,0901EC221074,ECE,5G Network Optimization,UGC,3.91,https://doi.org/10.1000/8003.71
+Kabir Chopra,0901CE221020,CE,Hydrological Modeling,SCI,2.84,https://doi.org/10.1000/9881.59
+Vivaan Nair,0901EE221062,EE,Smart Grid Technologies,Scopus,1.36,https://doi.org/10.1000/9991.42
+Aarav Nair,0901EC221022,ECE,Antenna Design for Satellites,SCI,1.74,https://doi.org/10.1000/2974.27
+Neel Chopra,0901CS221032,CSE,Blockchain in Healthcare,Scopus,3.98,https://doi.org/10.1000/9233.74
+Kabir Singh,0901EE221071,EE,High Voltage Engineering,UGC,6.92,https://doi.org/10.1000/9093.90
+Aditya Chopra,0901CD221073,CSD,AI Ethics and Fairness,Scopus,4.23,https://doi.org/10.1000/9011.36
+Aditya Sharma,0901CE221072,CE,Sustainable Concrete Technology,Scopus,6.89,https://doi.org/10.1000/1076.65
+Aarav Singh,0901CS221079,CSE,Quantum Computing Algorithms,Scopus,5.05,https://doi.org/10.1000/7928.60
+Kunal Patel,0901ME221015,ME,CFD in Aerodynamics,SCI,7.4,https://doi.org/10.1000/5292.49
+Aditya Mehta,0901CE221040,CE,AI in Urban Planning,SCI,5.1,https://doi.org/10.1000/7288.33
+Kabir Reddy,0901CD221052,CSD,Cognitive Computing Applications,UGC,2.4,https://doi.org/10.1000/6754.17
+Aarav Chopra,0901EC221052,ECE,Nanoelectronics in Communication,UGC,7.93,https://doi.org/10.1000/1046.41
+Aarav Nair,0901EE221082,EE,Battery Storage Optimization,UGC,9.61,https://doi.org/10.1000/7432.87
+Aditya Singh,0901EE221040,EE,High Voltage Engineering,UGC,8.8,https://doi.org/10.1000/7855.60
+Aarav Sharma,0901CE221098,CE,Sustainable Concrete Technology,SCI,9.11,https://doi.org/10.1000/1035.58
+Aditya Reddy,0901ME221055,ME,Robotic Process Automation,SCI,3.6,https://doi.org/10.1000/8685.30
+Kabir Singh,0901CE221085,CE,Seismic Resistant Structures,Scopus,8.21,https://doi.org/10.1000/6193.96
+Ishaan Reddy,0901CS221038,CSE,IoT Security Challenges,Scopus,6.01,https://doi.org/10.1000/7854.14
+Aryan Chopra,0901CS221027,CSE,Blockchain in Healthcare,Scopus,9.05,https://doi.org/10.1000/3879.25
+Neel Mehta,0901ME221098,ME,Advancements in 3D Printing,Scopus,1.71,https://doi.org/10.1000/9348.30
+Aryan Nair,0901CE221069,CE,Seismic Resistant Structures,SCI,2.08,https://doi.org/10.1000/4511.77
+Ishaan Yadav,0901EC221014,ECE,5G Network Optimization,SCI,1.66,https://doi.org/10.1000/1415.15
+Ishaan Chopra,0901CD221071,CSD,Big Data in Social Sciences,SCI,7.7,https://doi.org/10.1000/3582.96
+Aryan Patel,0901ME221022,ME,Thermal Management Systems,SCI,6.68,https://doi.org/10.1000/6580.67
+Rahul Chopra,0901EE221047,EE,Smart Grid Technologies,SCI,1.88,https://doi.org/10.1000/5166.82
+Rahul Chopra,0901CS221080,CSE,Blockchain in Healthcare,UGC,6.14,https://doi.org/10.1000/5306.26
+Kunal Mehta,0901EC221035,ECE,Antenna Design for Satellites,UGC,1.83,https://doi.org/10.1000/3727.93
+Vivaan Singh,0901CD221017,CSD,Cognitive Computing Applications,UGC,8.11,https://doi.org/10.1000/4150.57
+Aditya Nair,0901CS221040,CSE,Blockchain in Healthcare,Scopus,7.76,https://doi.org/10.1000/5502.99
+Aryan Verma,0901EC221057,ECE,Antenna Design for Satellites,Scopus,6.4,https://doi.org/10.1000/4240.78
+Aryan Sharma,0901ME221024,ME,Thermal Management Systems,Scopus,6.94,https://doi.org/10.1000/6244.48
+Kunal Chopra,0901ME221077,ME,Smart Materials in Manufacturing,Scopus,1.08,https://doi.org/10.1000/5088.48
+Aarav Verma,0901CE221051,CE,Smart Highway Systems,Scopus,9.35,https://doi.org/10.1000/7416.17
+Aditya Verma,0901EC221028,ECE,VLSI in Embedded Systems,UGC,9.28,https://doi.org/10.1000/2166.28
+Vivaan Verma,0901CE221081,CE,Seismic Resistant Structures,Scopus,8.91,https://doi.org/10.1000/4317.98
+Aarav Verma,0901EE221037,EE,Battery Storage Optimization,SCI,7.89,https://doi.org/10.1000/2285.37
+Aditya Reddy,0901CE221023,CE,AI in Urban Planning,SCI,6.18,https://doi.org/10.1000/6467.50
+Ishaan Sharma,0901CD221088,CSD,Human-Computer Interaction,SCI,5.89,https://doi.org/10.1000/1256.86
+Aarav Verma,0901EE221047,EE,Smart Grid Technologies,UGC,7.13,https://doi.org/10.1000/9091.43
+Neel Yadav,0901CD221032,CSD,Big Data in Social Sciences,UGC,9.28,https://doi.org/10.1000/8569.32
+Aryan Reddy,0901EE221081,EE,High Voltage Engineering,SCI,9.71,https://doi.org/10.1000/3510.41
+Aryan Singh,0901CD221031,CSD,Cognitive Computing Applications,Scopus,1.39,https://doi.org/10.1000/8585.35
+Ishaan Singh,0901CE221073,CE,Sustainable Concrete Technology,UGC,7.5,https://doi.org/10.1000/6712.52
+Rahul Chopra,0901CD221042,CSD,Neural Networks in NLP,UGC,9.17,https://doi.org/10.1000/6425.15
+Aryan Singh,0901EE221093,EE,Renewable Energy Microgrids,SCI,3.54,https://doi.org/10.1000/5841.28
+Vivaan Verma,0901CD221023,CSD,Human-Computer Interaction,Scopus,5.48,https://doi.org/10.1000/7261.69
+Kabir Mehta,0901ME221051,ME,Smart Materials in Manufacturing,UGC,5.57,https://doi.org/10.1000/9908.41
+Rahul Nair,0901CS221080,CSE,AI-Powered Cybersecurity,Scopus,5.3,https://doi.org/10.1000/9426.16
+Vivaan Singh,0901EC221075,ECE,Antenna Design for Satellites,SCI,8.81,https://doi.org/10.1000/1636.18

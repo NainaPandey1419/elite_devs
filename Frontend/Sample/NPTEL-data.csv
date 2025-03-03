@@ -1,0 +1,101 @@
+studentName,enrollmentNumber,branch,courseName,score,certificateType,duration
+Neel Yadav,0901CE221040,CE,VLSI Design,56,No Certificate,4
+Kabir Reddy,0901CD221014,CSD,Structural Analysis,61,Silver,12
+Rahul Patel,0901EC221096,ECE,Thermodynamics,92,Gold,8
+Aarav Singh,0901ME221043,ME,Thermodynamics,45,No Certificate,4
+Kabir Chopra,0901ME221032,ME,Control Systems,66,Silver,4
+Rahul Singh,0901CD221056,CSD,Structural Analysis,69,Silver,12
+Rohan Nair,0901EE221039,EE,VLSI Design,87,Elite,12
+Vivaan Singh,0901ME221068,ME,Machine Learning,63,Silver,8
+Neel Reddy,0901EC221063,ECE,Machine Learning,43,No Certificate,4
+Neel Mehta,0901CS221082,CSE,Thermodynamics,68,Silver,8
+Aryan Singh,0901ME221056,ME,Machine Learning,54,No Certificate,12
+Aditya Chopra,0901EE221048,EE,Data Structures,96,Gold,12
+Aryan Mehta,0901CS221044,CSE,Digital Circuits,47,No Certificate,12
+Aryan Yadav,0901EE221089,EE,Structural Analysis,59,No Certificate,12
+Kunal Mehta,0901CS221028,CSE,Cyber Security,48,No Certificate,8
+Aditya Patel,0901CE221080,CE,Quantum Computing,69,Silver,12
+Aryan Yadav,0901EE221012,EE,Structural Analysis,100,Gold,8
+Ishaan Reddy,0901CS221088,CSE,Machine Learning,57,No Certificate,4
+Neel Singh,0901CS221060,CSE,Control Systems,71,Silver,12
+Neel Singh,0901ME221063,ME,VLSI Design,56,No Certificate,12
+Ishaan Nair,0901CD221064,CSD,Thermodynamics,59,No Certificate,12
+Kunal Nair,0901CD221073,CSD,VLSI Design,71,Silver,8
+Aarav Sharma,0901EE221094,EE,Thermodynamics,64,Silver,12
+Aditya Verma,0901CD221022,CSD,Thermodynamics,61,Silver,12
+Rohan Mehta,0901CS221059,CSE,Digital Circuits,50,No Certificate,8
+Vivaan Nair,0901ME221079,ME,Cyber Security,71,Silver,8
+Ishaan Yadav,0901CD221036,CSD,Data Structures,90,Gold,12
+Rahul Singh,0901CE221054,CE,Thermodynamics,79,Elite,8
+Rohan Sharma,0901EC221092,ECE,Machine Learning,65,Silver,4
+Aarav Sharma,0901EC221077,ECE,Machine Learning,86,Elite,8
+Aditya Yadav,0901EC221076,ECE,Data Structures,53,No Certificate,12
+Ishaan Verma,0901ME221013,ME,Structural Analysis,55,No Certificate,4
+Kabir Mehta,0901EC221053,ECE,VLSI Design,85,Elite,8
+Rohan Reddy,0901EE221046,EE,Cyber Security,61,Silver,4
+Rohan Reddy,0901EC221040,ECE,Control Systems,81,Elite,4
+Ishaan Sharma,0901EE221091,EE,Machine Learning,51,No Certificate,12
+Kabir Patel,0901CS221043,CSE,Structural Analysis,61,Silver,8
+Kabir Verma,0901EE221040,EE,Thermodynamics,54,No Certificate,12
+Rahul Chopra,0901CD221030,CSD,Control Systems,65,Silver,4
+Vivaan Yadav,0901CS221056,CSE,Structural Analysis,81,Elite,12
+Rohan Mehta,0901CE221087,CE,Machine Learning,71,Silver,12
+Rohan Nair,0901CS221039,CSE,Thermodynamics,71,Silver,4
+Neel Nair,0901CS221037,CSE,VLSI Design,81,Elite,8
+Neel Verma,0901EC221041,ECE,Power Electronics,44,No Certificate,4
+Kunal Nair,0901CE221085,CE,Data Structures,51,No Certificate,4
+Kabir Nair,0901EC221013,ECE,VLSI Design,56,No Certificate,12
+Aarav Verma,0901EE221064,EE,Data Structures,86,Elite,8
+Aditya Singh,0901CE221010,CE,VLSI Design,45,No Certificate,4
+Ishaan Mehta,0901EE221064,EE,VLSI Design,67,Silver,4
+Aditya Chopra,0901CS221094,CSE,Power Electronics,73,Silver,8
+Neel Chopra,0901CE221049,CE,Thermodynamics,50,No Certificate,8
+Rahul Singh,0901ME221068,ME,VLSI Design,43,No Certificate,8
+Rahul Singh,0901CD221026,CSD,Digital Circuits,41,No Certificate,4
+Aarav Yadav,0901EC221030,ECE,Thermodynamics,56,No Certificate,12
+Rohan Chopra,0901CS221017,CSE,Digital Circuits,48,No Certificate,4
+Rahul Nair,0901CD221081,CSD,VLSI Design,90,Gold,4
+Neel Gupta,0901EE221079,EE,VLSI Design,59,No Certificate,4
+Aditya Reddy,0901CE221066,CE,Data Structures,97,Gold,12
+Rahul Verma,0901ME221064,ME,VLSI Design,61,Silver,12
+Aryan Patel,0901CE221025,CE,Control Systems,87,Elite,8
+Ishaan Sharma,0901ME221032,ME,Thermodynamics,78,Elite,8
+Rahul Verma,0901CE221048,CE,VLSI Design,72,Silver,4
+Aarav Reddy,0901CS221038,CSE,Thermodynamics,46,No Certificate,12
+Rohan Sharma,0901EC221031,ECE,VLSI Design,64,Silver,12
+Aditya Reddy,0901ME221060,ME,Digital Circuits,82,Elite,8
+Rahul Reddy,0901EC221010,ECE,Control Systems,82,Elite,12
+Rohan Nair,0901EE221030,EE,Quantum Computing,92,Gold,12
+Vivaan Reddy,0901CD221033,CSD,Machine Learning,91,Gold,4
+Neel Sharma,0901CS221051,CSE,Digital Circuits,53,No Certificate,8
+Aarav Verma,0901ME221056,ME,Quantum Computing,63,Silver,12
+Rohan Mehta,0901CS221052,CSE,Quantum Computing,71,Silver,12
+Kunal Nair,0901EE221057,EE,Cyber Security,42,No Certificate,12
+Rohan Gupta,0901EC221089,ECE,Machine Learning,78,Elite,12
+Kunal Reddy,0901ME221078,ME,Machine Learning,52,No Certificate,12
+Vivaan Nair,0901ME221058,ME,Control Systems,92,Gold,4
+Aditya Chopra,0901CE221055,CE,VLSI Design,98,Gold,8
+Kabir Nair,0901EC221018,ECE,Control Systems,70,Silver,12
+Kunal Sharma,0901ME221087,ME,Machine Learning,86,Elite,12
+Kabir Patel,0901EE221015,EE,Data Structures,82,Elite,8
+Aarav Gupta,0901ME221064,ME,Control Systems,82,Elite,8
+Neel Sharma,0901ME221056,ME,Control Systems,55,No Certificate,12
+Aryan Reddy,0901EE221058,EE,VLSI Design,87,Elite,12
+Ishaan Sharma,0901CE221045,CE,Power Electronics,76,Elite,4
+Aryan Chopra,0901EE221043,EE,Quantum Computing,68,Silver,12
+Aryan Mehta,0901EE221036,EE,Power Electronics,69,Silver,8
+Vivaan Singh,0901ME221017,ME,Quantum Computing,70,Silver,4
+Aditya Nair,0901EE221019,EE,Cyber Security,62,Silver,4
+Kunal Sharma,0901CD221088,CSD,Quantum Computing,58,No Certificate,8
+Vivaan Yadav,0901CS221057,CSE,Digital Circuits,67,Silver,4
+Aditya Patel,0901EC221099,ECE,Power Electronics,65,Silver,12
+Aarav Singh,0901EE221071,EE,Cyber Security,54,No Certificate,12
+Neel Gupta,0901ME221077,ME,VLSI Design,93,Gold,8
+Vivaan Sharma,0901EE221069,EE,Machine Learning,46,No Certificate,8
+Aarav Patel,0901EE221048,EE,Machine Learning,76,Elite,8
+Vivaan Sharma,0901EE221070,EE,Control Systems,43,No Certificate,8
+Aditya Patel,0901EC221022,ECE,Control Systems,74,Silver,12
+Vivaan Chopra,0901ME221019,ME,Quantum Computing,95,Gold,4
+Kabir Gupta,0901EC221022,ECE,VLSI Design,62,Silver,12
+Aarav Patel,0901EC221091,ECE,Thermodynamics,57,No Certificate,8
+Ishaan Patel,0901EC221066,ECE,VLSI Design,98,Gold,12
