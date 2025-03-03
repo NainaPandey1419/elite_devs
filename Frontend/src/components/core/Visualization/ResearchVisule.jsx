@@ -16,94 +16,101 @@ import {
 import exportPDF from "./exportPDF";
 import Branches from "./Branches";
 
-export default function ResearchVisual() {
+export default function ResearchVisule() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     getResearchData(dispatch);
   }, []);
-
   const researchData = useSelector((store) => store.fetchedData);
+ console.log(researchData)
 
-  if (researchData.length === 0) {
-    return <div>Loading data...</div>;
-  }
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A", "#48C9B0"];
 
-  const COLORS = [
-    "#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A569BD", "#F1948A", "#48C9B0"
-  ];
-
-  // Research Papers Published per Department (Bar Chart)
-  const departmentDistribution = researchData.reduce((acc, record) => {
-    acc[record.department] = (acc[record.department] || 0) + 1;
+  // 🟢 Branch-wise Research Paper Distribution (Pie Chart)
+  const branchDistribution = researchData.reduce((acc, paper) => {
+    acc[paper.branch] = (acc[paper.branch] || 0) + 1;
     return acc;
   }, {});
 
-  const departmentData = Object.keys(departmentDistribution).map((dept) => ({
-    name: dept,
-    papers: departmentDistribution[dept],
+  const branchData = Object.keys(branchDistribution).map((branch) => ({
+    name: branch,
+    value: branchDistribution[branch],
   }));
 
-  // Research Papers by Type (Pie Chart)
-  const typeDistribution = researchData.reduce((acc, record) => {
-    acc[record.type] = (acc[record.type] || 0) + 1;
+  // 🔵 Indexing-wise Paper Distribution (Bar Chart)
+  const indexingDistribution = researchData.reduce((acc, paper) => {
+    acc[paper.indexing] = (acc[paper.indexing] || 0) + 1;
     return acc;
   }, {});
 
-  const typeData = Object.keys(typeDistribution).map((type) => ({
-    name: type,
-    value: typeDistribution[type],
+  const indexingData = Object.keys(indexingDistribution).map((indexing) => ({
+    indexing,
+    count: indexingDistribution[indexing],
+  }));
+
+  // ⏳ Impact Factor Distribution (Bar Chart with Reduced Intervals)
+  const impactFactorRanges = {
+    "0 - 2": 0,
+    "2 - 4": 0,
+    "4 - 6": 0,
+    "6 - 8": 0,
+    "8 - 10": 0,
+    "10+": 0,
+  };
+
+  researchData.forEach((paper) => {
+    const impactFactor = parseFloat(paper.impactFactor); // Convert to number
+    if (impactFactor < 2) impactFactorRanges["0 - 2"]++;
+    else if (impactFactor < 4) impactFactorRanges["2 - 4"]++;
+    else if (impactFactor < 6) impactFactorRanges["4 - 6"]++;
+    else if (impactFactor < 8) impactFactorRanges["6 - 8"]++;
+    else if (impactFactor < 10) impactFactorRanges["8 - 10"]++;
+    else impactFactorRanges["10+"]++;
+  });
+
+  const impactFactorData = Object.keys(impactFactorRanges).map((range) => ({
+    range,
+    count: impactFactorRanges[range],
   }));
 
   return (
-    <div>
-      <Branches />
-      <div id="pdf-content" className="relative text-center p-5 font-sans">
-        <button
-          onClick={exportPDF}
-          className="absolute top-2 right-2 bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Export as PDF
-        </button>
-        <h1>Research Data Insights</h1>
-{/* Pie Chart: Research Papers by Type */}
-<h2>Research Papers by Type</h2>
-        <ResponsiveContainer width="100%" height={400}>
-          <PieChart>
-            <Pie
-              data={typeData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={150}
-              fill="#ff7300"
-              label={(entry) => `${entry.name} (${entry.value})`}
-            >
-              {typeData.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-            <Tooltip formatter={(value, name) => [`${value} papers`, name]} />
-          </PieChart>
-        </ResponsiveContainer>
-        {/* Bar Chart: Research Papers Published per Department */}
-        <h2>Research Papers Published per Department</h2>
-        <ResponsiveContainer width="90%" height={300}>
-          <BarChart data={departmentData}>
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="papers" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
+    <div style={{ textAlign: "center", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h1>Research Paper Statistics</h1>
 
-        
-      </div>
+      {/* 🟢 Pie Chart: Branch-wise Research Paper Distribution */}
+      <h2>Branch-wise Research Paper Distribution</h2>
+      <ResponsiveContainer width="100%" height={400}>
+        <PieChart>
+          <Pie
+            data={branchData}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={150}
+            fill="#8884d8"
+            label={({ name, value }) => `${name} (${value})`}
+          >
+            {branchData.map((_, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip formatter={(value, name) => [`${value} papers`, name]} />
+        </PieChart>
+      </ResponsiveContainer>
+
+      {/* 🔵 Bar Chart: Indexing-wise Research Paper Distribution */}
+      <h2>Indexing-wise Research Paper Distribution</h2>
+      <ResponsiveContainer width="90%" height={300}>
+        <BarChart data={indexingData}>
+          <XAxis dataKey="indexing" />
+          <YAxis />
+          <Tooltip formatter={(value) => [`${value} papers`]} />
+          <Legend />
+          <Bar dataKey="count" fill="#FF8042" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }

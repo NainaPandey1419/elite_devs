@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import { FiUploadCloud, FiX, FiFile } from "react-icons/fi";
 import LoadingBtn from '../../../common/LoadingBtn';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function UploadResearchPaper({ action }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const fetching = useSelector(store => store.fetching);
+  const currUser = useSelector(store => store.auth);
 
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
@@ -59,12 +62,16 @@ export default function UploadResearchPaper({ action }) {
     setValue("file", null);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (!file) {
       setUploadStatus("error");
       return;
     }
-    console.log("File submitted:", data.file);
+    if (currUser.token && currUser.role === 'ADMIN') {
+      return await UploadResearchPaper(dispatch, data.file);
+    } else {
+      return navigate('/login');
+    }
   };
 
   const formatFileSize = (bytes) => {
@@ -89,8 +96,8 @@ export default function UploadResearchPaper({ action }) {
           <div
             {...getRootProps()}
             className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg ${isDragActive
-                ? "border-blue-400 bg-blue-50"
-                : "border-gray-300 hover:border-gray-400"
+              ? "border-blue-400 bg-blue-50"
+              : "border-gray-300 hover:border-gray-400"
               } ${uploadStatus === "error" ? "border-red-500" : ""}
             transition-all duration-200 ease-in-out cursor-pointer`}
           >

@@ -32,7 +32,7 @@ const register = async function (req, res, next) {
   }
 
   
-  const user = await User.create({
+  let user = await User.create({
     fullName,
     email,
     password,
@@ -75,10 +75,18 @@ const register = async function (req, res, next) {
   } catch (error) {
     return next(new ApiError(409, error.message)); 
   }
-  await user.save();
-  user.password = undefined;
+  user = await user.save();
+  let currUser = await User.findById(user._id,{fullName:true,email:true,avatar:true,role:true})
   const token = await user.generateJWTtoken();
-  res.cookie("token", token, cookieOptions);
+
+  currUser = currUser.toObject();
+  currUser.token = token
+  
+  res.cookie("token", token, cookieOptions).json({
+    success:true,
+    message:'SignUp successful',
+    currUser
+  });
   
   
 

@@ -99,6 +99,8 @@ const getInternshipData = async (req, res, next) => {
   }
 };
 
+
+
 const deleteAllInternshipData = async (req, res, next) => {
   try {
     const result = await Intership.deleteMany({});

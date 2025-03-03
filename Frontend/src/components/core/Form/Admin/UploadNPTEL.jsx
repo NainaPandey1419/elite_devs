@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import { FiUploadCloud, FiX, FiFile } from "react-icons/fi";
 import LoadingBtn from '../../../common/LoadingBtn';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function uploadNPTEL({action}) {
   const dispatch = useDispatch();
-  const fetching = useSelector(store=>store.fetching);
+  const navigate = useNavigate();
+  const fetching = useSelector(store => store.fetching);
+  const currUser = useSelector(store => store.auth);
 
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");

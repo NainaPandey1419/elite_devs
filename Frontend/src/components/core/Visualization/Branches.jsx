@@ -13,7 +13,7 @@ const Branches = ({action}) => {
       prev.includes(branch)
         ? prev.filter((b) => b !== branch) // Remove if selected
         : [...prev, branch] // Add if not selected
-    );
+      );
   };
   
   // Run getFilterInternShipData whenever selectedBranches changes

@@ -6,10 +6,13 @@ import { FiUploadCloud, FiX, FiFile } from "react-icons/fi";
 import { uploadInternShipData } from '../../../../operations/Admin';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingBtn from '../../../common/LoadingBtn';
+import { useNavigate } from 'react-router-dom';
 
-export default function UploadInternship({action}) {
+export default function UploadInternship({ action }) {
   const dispatch = useDispatch();
-  const fetching = useSelector(store=>store.fetching);
+  const navigate = useNavigate();
+  const fetching = useSelector(store => store.fetching);
+  const currUser = useSelector(store => store.auth);
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
   const maxSize = 10 * 1024 * 1024; // 10MB
@@ -61,7 +64,7 @@ export default function UploadInternship({action}) {
   // function handelImage(e) {
   //   e.preventDefault()
   //   const uploadImage=e.target.files[0]
- 
+
   //   if (uploadImage) {
   //      const filerider=new FileReader()
   //      filerider.readAsDataURL(uploadImage)
@@ -71,14 +74,19 @@ export default function UploadInternship({action}) {
   //           })
   //      })
   //   }
-   
+
   // }
   const onSubmit = async (data) => {
     if (!file) {
       setUploadStatus("error");
       return;
     }
-    return await uploadInternShipData(dispatch,data.file);
+    if (currUser.token && currUser.role === 'ADMIN') {
+      return await uploadInternShipData(dispatch, data.file);
+    } else {
+      return navigate('/login');
+    }
+
   };
 
   const formatFileSize = (bytes) => {
@@ -102,11 +110,10 @@ export default function UploadInternship({action}) {
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
           <div
             {...getRootProps()}
-            className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg ${
-              isDragActive
+            className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-lg ${isDragActive
                 ? "border-blue-400 bg-blue-50"
                 : "border-gray-300 hover:border-gray-400"
-            } ${uploadStatus === "error" ? "border-red-500" : ""}
+              } ${uploadStatus === "error" ? "border-red-500" : ""}
             transition-all duration-200 ease-in-out cursor-pointer`}
           >
             <div className="space-y-1 text-center">
@@ -165,10 +172,10 @@ export default function UploadInternship({action}) {
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
               disabled={!file || fetching}
-            >{fetching?
-              <LoadingBtn working={'Uploading'}/>:
+            >{fetching ?
+              <LoadingBtn working={'Uploading'} /> :
               'Upload File'
-            }
+              }
             </button>
           </div>
         </form>
